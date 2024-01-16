@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqw5txdycyv3b"]
+
+[ext_resource type="PackedScene" uid="uid://ya1de1rf050b" path="res://behold_a_man_run_animation.tscn" id="1_elouo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lm2am"]
+sky_material = SubResource("ProceduralSkyMaterial_js7qu")
+
+[sub_resource type="Environment" id="Environment_4ksog"]
+background_mode = 2
+sky = SubResource("Sky_lm2am")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7xgqu"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1bg0j"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ksog")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7xgqu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1bg0j")
+
+[node name="behold a man run animation" parent="." instance=ExtResource("1_elouo")]
