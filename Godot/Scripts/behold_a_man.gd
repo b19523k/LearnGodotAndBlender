@@ -30,9 +30,6 @@ func _unhandled_input(event):
 		spring_arm.rotate_x(-event.relative.y * 0.005)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
 
-func _process(delta):
-	update_animation_parameters()
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -48,6 +45,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction = direction.rotated(Vector3.UP, spring_arm_pivot.rotation.y)
+	update_animation_parameters(direction)
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * speed, LERP_VAL)
 		velocity.z = lerp(velocity.z, direction.z * speed, LERP_VAL)
@@ -60,9 +58,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func update_animation_parameters():
-	var is_moving = velocity != Vector3.ZERO
-	
+func update_animation_parameters(is_moving):
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
