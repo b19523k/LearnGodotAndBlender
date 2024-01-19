@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqw5txdycyv3b"]
 
-[ext_resource type="PackedScene" uid="uid://buvv1h728nu6f" path="res://behold_a_man.tscn" id="1_bac1p"]
+[ext_resource type="PackedScene" uid="uid://spusfhwp5lc3" path="res://Scenes/behold_a_man.tscn" id="1_tvu0m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,5 +38,5 @@ mesh = SubResource("PlaneMesh_7xgqu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1bg0j")
 
-[node name="behold_a_man" parent="." instance=ExtResource("1_bac1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.617715, 2.38419e-07, 2.41029)
+[node name="behold_a_man" parent="." instance=ExtResource("1_tvu0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630674, -0.0314262, 2.21583)

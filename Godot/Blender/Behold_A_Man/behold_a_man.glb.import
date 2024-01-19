@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdnmbb43yme1u"
-path="res://.godot/imported/behold_a_man.glb-4c44a2891327998dd186c7cd19fb1fa2.scn"
+path="res://.godot/imported/behold_a_man.glb-1a21b6211ee173b89fdba97af565ccca.scn"
 
 [deps]
 
-source_file="res://Imports/Behold_A_Man/behold_a_man.glb"
-dest_files=["res://.godot/imported/behold_a_man.glb-4c44a2891327998dd186c7cd19fb1fa2.scn"]
+source_file="res://Blender/Behold_A_Man/behold_a_man.glb"
+dest_files=["res://.godot/imported/behold_a_man.glb-1a21b6211ee173b89fdba97af565ccca.scn"]
 
 [params]
 

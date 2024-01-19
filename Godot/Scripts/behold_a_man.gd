@@ -12,6 +12,7 @@ const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
 
 var is_rolling = false
+var is_jumping = false
 var speed = RUN_SPEED
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -62,10 +63,20 @@ func update_animation_parameters(is_moving):
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
-	else:
+	elif (Input.is_action_just_pressed("jump")):
+		anim_tree["parameters/conditions/is_jumping"] = true
+		is_jumping = true
 		anim_tree["parameters/conditions/is_rolling"] = false
-
-
-func _on_animation_tree_animation_finished(anim_name):
-	if (anim_name == "roll"):
 		is_rolling = false
+		
+		
+
+
+func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
+	#print("anim end: " + anim_name)
+	if (anim_name == "roll"):
+		anim_tree["parameters/conditions/is_rolling"] = false
+		is_rolling = false
+	if (anim_name == "jump"):
+		anim_tree["parameters/conditions/is_jumping"] = false
+		is_jumping = false
