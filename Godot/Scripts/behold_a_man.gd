@@ -10,6 +10,7 @@ const LERP_VAL = .15
 
 const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
+const JUMP_VELOCITY = 4.5
 
 var is_rolling = false
 var is_jumping = false
@@ -35,6 +36,10 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_jumping:
+		velocity.y = JUMP_VELOCITY
 		
 	if (is_rolling):
 		speed = ROLL_SPEED
