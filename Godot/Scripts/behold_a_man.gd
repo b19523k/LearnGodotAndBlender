@@ -10,10 +10,12 @@ const LERP_VAL = .15
 
 const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
+const PUNCH_SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 
 var is_rolling = false
 var is_jumping = false
+var is_punching = false
 var speed = RUN_SPEED
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,6 +34,14 @@ func _unhandled_input(event):
 		spring_arm.rotate_x(-event.relative.y * 0.005)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
 
+func update_move_speed():
+	speed = RUN_SPEED
+	
+	if (is_rolling):
+		speed = ROLL_SPEED
+	elif (is_punching):
+		speed = PUNCH_SPEED
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -41,10 +51,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_jumping:
 		velocity.y = JUMP_VELOCITY
 		
-	if (is_rolling):
-		speed = ROLL_SPEED
-	else:
-		speed = RUN_SPEED
+	update_move_speed()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -73,7 +80,9 @@ func update_animation_parameters(is_moving):
 		is_jumping = true
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
-		
+	elif (Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
+		anim_tree["parameters/conditions/is_punching"] = true
+		is_punching = true
 		
 
 
@@ -82,6 +91,10 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	if (anim_name == "roll"):
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
-	if (anim_name == "jump"):
+	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
 		is_jumping = false
+	elif (anim_name == "punch"):
+		anim_tree["parameters/conditions/is_punching"] = false
+		is_punching = false
+
