@@ -10,7 +10,7 @@ const LERP_VAL = .15
 
 const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
-const PUNCH_SPEED = 3.0
+const PUNCH_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 
 var is_rolling = false
