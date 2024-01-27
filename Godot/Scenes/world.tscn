@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqw5txdycyv3b"]
+[gd_scene load_steps=9 format=3 uid="uid://cqw5txdycyv3b"]
 
 [ext_resource type="PackedScene" uid="uid://cgj5dxgc4prqm" path="res://Prefabs/behold_a_man.tscn" id="1_44y18"]
+[ext_resource type="PackedScene" uid="uid://cubk2ikf6250l" path="res://Prefabs/shiny_cube.tscn" id="2_6aaa6"]
+[ext_resource type="PackedScene" uid="uid://dio0rbiu6b0vp" path="res://Blender/Shiny_Cylinder/shiny_cylinder.blend" id="3_umnsu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,9 +36,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0314257, 0)
 mesh = SubResource("PlaneMesh_7xgqu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(1.11758, 0, 0, 0, 1.11758, 0, 0, 0, 1.11758, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1bg0j")
 
 [node name="behold_a_man" parent="." instance=ExtResource("1_44y18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95629, -0.0314257, 3.60854)
+
+[node name="shiny_cube" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822874, 0.0112676, -1.43316)
+
+[node name="shiny_cube2" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.829164, 0.00429216, -2.42624)
+
+[node name="shiny_cube3" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827576, 1.00147, -2.42948)
+
+[node name="shiny_cube3" parent="shiny_cube3" instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00413752, 0.985527, -1.00311)
+
+[node name="shiny_cube3" parent="shiny_cube3/shiny_cube3" instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00413752, 0.985527, -1.00311)
+
+[node name="shiny_cylinder" parent="." instance=ExtResource("3_umnsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)

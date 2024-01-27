@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cubk2ikf6250l"]
+
+[ext_resource type="PackedScene" uid="uid://eqyw5ukocs04" path="res://Blender/Shiny_Cube/shiny_cube.blend" id="1_j6k0o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0swa7"]
+
+[node name="shiny_cube" instance=ExtResource("1_j6k0o")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_0swa7")
