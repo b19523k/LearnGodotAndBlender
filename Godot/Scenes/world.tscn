@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqw5txdycyv3b"]
+[gd_scene load_steps=10 format=3 uid="uid://cqw5txdycyv3b"]
 
 [ext_resource type="PackedScene" uid="uid://cgj5dxgc4prqm" path="res://Prefabs/behold_a_man.tscn" id="1_44y18"]
 [ext_resource type="PackedScene" uid="uid://cubk2ikf6250l" path="res://Prefabs/shiny_cube.tscn" id="2_6aaa6"]
 [ext_resource type="PackedScene" uid="uid://dio0rbiu6b0vp" path="res://Blender/Shiny_Cylinder/shiny_cylinder.blend" id="3_umnsu"]
+[ext_resource type="PackedScene" uid="uid://djor3qgwbxo3j" path="res://Prefabs/shambler.tscn" id="4_ela1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,7 +33,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0314257, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.0256512, 0)
 mesh = SubResource("PlaneMesh_7xgqu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -61,3 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00413752, 0.985527, -1.003
 
 [node name="shiny_cylinder" parent="." instance=ExtResource("3_umnsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
+
+[node name="shambler" parent="." instance=ExtResource("4_ela1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25546, -0.0256512, 2.93339)
