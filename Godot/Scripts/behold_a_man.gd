@@ -2,9 +2,12 @@ extends CharacterBody3D
 
 @onready var spring_arm_pivot = $SpringArmPivot
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
-@onready var armature = $Armature
+@onready var armature = $behold_a_man/Armature
+@onready var skeleton = $behold_a_man/Armature/Skeleton3D
 @onready var anim_tree = $AnimationTree
-@onready var anim_player = $AnimationPlayer
+
+var anim_player_rel_path = "../behold_a_man/AnimationPlayer"
+
 
 const LERP_VAL = .15
 
@@ -22,6 +25,11 @@ var speed = RUN_SPEED
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	# Settings to import from Blender automatically
+	anim_tree.anim_player = NodePath(anim_player_rel_path)
+	skeleton.rotation.y = 135
+	
+	# Other ready settings
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	anim_tree.active = true
 

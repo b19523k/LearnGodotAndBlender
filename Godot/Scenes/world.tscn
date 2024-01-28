@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqw5txdycyv3b"]
 
-[ext_resource type="PackedScene" uid="uid://cgj5dxgc4prqm" path="res://Prefabs/behold_a_man.tscn" id="1_44y18"]
+[ext_resource type="PackedScene" uid="uid://byon65lwt1g1a" path="res://Prefabs/behold_a_man.tscn" id="1_44y18"]
 [ext_resource type="PackedScene" uid="uid://cubk2ikf6250l" path="res://Prefabs/shiny_cube.tscn" id="2_6aaa6"]
 [ext_resource type="PackedScene" uid="uid://dio0rbiu6b0vp" path="res://Blender/Shiny_Cylinder/shiny_cylinder.blend" id="3_umnsu"]
 [ext_resource type="PackedScene" uid="uid://djor3qgwbxo3j" path="res://Prefabs/shambler.tscn" id="4_ela1s"]
@@ -42,9 +42,6 @@ transform = Transform3D(1.11758, 0, 0, 0, 1.11758, 0, 0, 0, 1.11758, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1bg0j")
 
-[node name="behold_a_man" parent="." instance=ExtResource("1_44y18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95629, -0.0314257, 3.60854)
-
 [node name="shiny_cube" parent="." instance=ExtResource("2_6aaa6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822874, 0.0112676, -1.43316)
 
@@ -65,3 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
 
 [node name="shambler" parent="." instance=ExtResource("4_ela1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25546, -0.0256512, 2.93339)
+
+[node name="BeholdAMan" parent="." instance=ExtResource("1_44y18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
