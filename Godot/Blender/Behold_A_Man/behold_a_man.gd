@@ -24,10 +24,13 @@ var speed = RUN_SPEED
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _ready():
+func auto_blender_import():
 	# Settings to import from Blender automatically
 	anim_tree.anim_player = NodePath(anim_player_rel_path)
 	skeleton.rotation.y = 135
+	
+func _ready():
+	auto_blender_import()
 	
 	# Other ready settings
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

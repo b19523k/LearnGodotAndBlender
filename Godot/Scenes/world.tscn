@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqw5txdycyv3b"]
 
-[ext_resource type="PackedScene" uid="uid://byon65lwt1g1a" path="res://Prefabs/behold_a_man.tscn" id="1_44y18"]
+[ext_resource type="PackedScene" uid="uid://byon65lwt1g1a" path="res://Blender/Behold_A_Man/behold_a_man.tscn" id="1_44y18"]
 [ext_resource type="PackedScene" uid="uid://cubk2ikf6250l" path="res://Prefabs/shiny_cube.tscn" id="2_6aaa6"]
 [ext_resource type="PackedScene" uid="uid://dio0rbiu6b0vp" path="res://Blender/Shiny_Cylinder/shiny_cylinder.blend" id="3_umnsu"]
-[ext_resource type="PackedScene" uid="uid://djor3qgwbxo3j" path="res://Prefabs/shambler.tscn" id="4_ela1s"]
+[ext_resource type="PackedScene" uid="uid://duiaq1x4eplqf" path="res://Blender/Shambler/Shambler.tscn" id="4_ela1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
