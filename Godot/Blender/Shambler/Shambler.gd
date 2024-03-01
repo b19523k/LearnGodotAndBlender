@@ -24,6 +24,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	velocity.z = .1
 	deltaTime = deltaTime + delta
 	if (deltaTime > time_between_anims):
 		deltaTime = deltaTime - time_between_anims
@@ -47,5 +48,5 @@ func _physics_process(delta):
 			idle = true
 			anim_tree["parameters/conditions/walk"] = false
 			anim_tree["parameters/conditions/idle"] = true
-
+	move_and_slide()
 	
