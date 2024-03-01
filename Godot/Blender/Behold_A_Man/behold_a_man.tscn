@@ -80,6 +80,8 @@ transitions = ["Start", "BlendSpace1D", SubResource("AnimationNodeStateMachineTr
 graph_offset = Vector2(-130, 34)
 
 [node name="BeholdAMan" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_vqj8l")
 
 [node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]

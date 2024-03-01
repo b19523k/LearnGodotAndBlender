@@ -1,11 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://duiaq1x4eplqf"]
+[gd_scene load_steps=21 format=3 uid="uid://duiaq1x4eplqf"]
 
 [ext_resource type="PackedScene" uid="uid://dg7esl7thqwei" path="res://Blender/Shambler/shambler.blend" id="1_gtryo"]
 [ext_resource type="Script" path="res://Blender/Shambler/Shambler.gd" id="1_q5jr3"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xm0bq"]
-radius = 0.25
-height = 3.005
 
 [sub_resource type="Animation" id="Animation_vbydj"]
 resource_name = "attack"
@@ -888,16 +884,17 @@ states/walk/node = SubResource("AnimationNodeAnimation_8cyk6")
 states/walk/position = Vector2(569, 64)
 transitions = ["death", "attack", SubResource("AnimationNodeStateMachineTransition_0ch65"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_bmvms"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_b36dj"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_1hf1s"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_8d5vo")]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xm0bq"]
+radius = 0.25
+height = 3.005
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yce8y"]
+radius = 5.0
+
 [node name="Shambler" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_q5jr3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205587, 1.5402, -0.070876)
-shape = SubResource("CapsuleShape3D_xm0bq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192617, 1.5402, -0.0700058)
-shape = SubResource("CapsuleShape3D_xm0bq")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../shambler")
@@ -913,3 +910,27 @@ parameters/conditions/walk = false
 
 [node name="shambler" parent="." instance=ExtResource("1_gtryo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0208369, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205587, 1.5402, -0.070876)
+shape = SubResource("CapsuleShape3D_xm0bq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192617, 1.5402, -0.0700058)
+shape = SubResource("CapsuleShape3D_xm0bq")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+mass = 0.01
+freeze = true
+freeze_mode = 1
+max_contacts_reported = 3
+contact_monitor = true
+
+[node name="AI_Search_Collider3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205587, 1.5402, -0.070876)
+shape = SubResource("SphereShape3D_yce8y")
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
+[connection signal="body_exited" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_exited"]

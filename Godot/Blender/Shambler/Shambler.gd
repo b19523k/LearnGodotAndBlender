@@ -7,6 +7,8 @@ var anim_player_rel_path = "../shambler/AnimationPlayer"
 var time_between_anims = 3
 var deltaTime = 0
 
+var playersInRange = []
+
 var idle = true
 var death = false
 var attack = false
@@ -24,6 +26,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	print(playersInRange)
 	velocity.z = .1
 	deltaTime = deltaTime + delta
 	if (deltaTime > time_between_anims):
@@ -50,3 +53,13 @@ func _physics_process(delta):
 			anim_tree["parameters/conditions/idle"] = true
 	move_and_slide()
 	
+
+
+func _on_rigid_body_3d_body_entered(body):
+	print('enter')
+	playersInRange.push_front(body)
+
+
+func _on_rigid_body_3d_body_exited(body):
+	print('exit')
+	playersInRange.erase(body)

@@ -70,6 +70,12 @@ primary={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Players"
+3d_physics/layer_3="Enemies"
+
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
