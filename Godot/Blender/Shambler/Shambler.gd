@@ -8,6 +8,9 @@ var time_between_anims = 3
 var deltaTime = 0
 
 var playersInRange = []
+var currentPlayerTarget = null
+
+var MV_SP = 3
 
 var idle = true
 var death = false
@@ -26,8 +29,17 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(playersInRange)
-	velocity.z = .1
+	
+	if (currentPlayerTarget != null):
+		var targetPos = currentPlayerTarget.transform.origin
+		var moveDir = (targetPos - position).normalized()
+		velocity = moveDir * MV_SP
+		look_at(targetPos, Vector3.UP)
+	else:
+		velocity = Vector3.ZERO
+	
+
+	
 	deltaTime = deltaTime + delta
 	if (deltaTime > time_between_anims):
 		deltaTime = deltaTime - time_between_anims
@@ -56,10 +68,15 @@ func _physics_process(delta):
 
 
 func _on_rigid_body_3d_body_entered(body):
-	print('enter')
-	playersInRange.push_front(body)
+	playersInRange.push_back(body)
+	if (currentPlayerTarget == null && playersInRange.size() > 0):
+		currentPlayerTarget = playersInRange[0]
 
 
 func _on_rigid_body_3d_body_exited(body):
-	print('exit')
 	playersInRange.erase(body)
+	if (body == currentPlayerTarget):
+		if (playersInRange.size() > 0):
+			currentPlayerTarget = playersInRange[0]
+		else:
+			currentPlayerTarget = null

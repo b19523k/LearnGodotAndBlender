@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dg7esl7thqwei" path="res://Blender/Shambler/shambler.blend" id="1_gtryo"]
 [ext_resource type="Script" path="res://Blender/Shambler/Shambler.gd" id="1_q5jr3"]
 
-[sub_resource type="Animation" id="Animation_vbydj"]
+[sub_resource type="Animation" id="Animation_n20ns"]
 resource_name = "attack"
 length = 0.708333
 tracks/0/type = "position_3d"
@@ -168,7 +168,7 @@ tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, 0, 1.64096, 0)
 
-[sub_resource type="Animation" id="Animation_5wvmp"]
+[sub_resource type="Animation" id="Animation_2x62g"]
 resource_name = "death"
 length = 0.25
 tracks/0/type = "position_3d"
@@ -333,7 +333,7 @@ tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, 0, 1.64096, 0)
 
-[sub_resource type="Animation" id="Animation_jg7kh"]
+[sub_resource type="Animation" id="Animation_moltk"]
 resource_name = "idle_loop"
 length = 0.708333
 loop_mode = 1
@@ -499,7 +499,7 @@ tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, 0, 1.64096, 0)
 
-[sub_resource type="Animation" id="Animation_6f5qw"]
+[sub_resource type="Animation" id="Animation_hih32"]
 resource_name = "walk_loop"
 length = 0.708333
 loop_mode = 1
@@ -665,7 +665,7 @@ tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_d22o0"]
+[sub_resource type="Animation" id="Animation_4w1dy"]
 resource_name = "walk_loop2"
 length = 0.708333
 loop_mode = 1
@@ -831,13 +831,13 @@ tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = PackedFloat32Array(0, 1, 0.0163259, -0.00970683, 0.672021, 0.740289)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q181b"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r82i2"]
 _data = {
-"attack": SubResource("Animation_vbydj"),
-"death": SubResource("Animation_5wvmp"),
-"idle": SubResource("Animation_jg7kh"),
-"walk": SubResource("Animation_6f5qw"),
-"walk2": SubResource("Animation_d22o0")
+"attack": SubResource("Animation_n20ns"),
+"death": SubResource("Animation_2x62g"),
+"idle": SubResource("Animation_moltk"),
+"walk": SubResource("Animation_hih32"),
+"walk2": SubResource("Animation_4w1dy")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hg5rd"]
@@ -899,7 +899,7 @@ script = ExtResource("1_q5jr3")
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../shambler")
 libraries = {
-"": SubResource("AnimationLibrary_q181b")
+"": SubResource("AnimationLibrary_r82i2")
 }
 tree_root = SubResource("AnimationNodeStateMachine_8f14e")
 anim_player = NodePath("../shambler/AnimationPlayer")
