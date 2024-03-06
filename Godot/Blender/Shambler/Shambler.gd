@@ -3,6 +3,8 @@ extends CharacterBody3D
 @onready var skeleton = $shambler/Armature/Skeleton3D
 @onready var anim_tree = $AnimationTree
 
+var rng = RandomNumberGenerator.new()
+
 var anim_player_rel_path = "../shambler/AnimationPlayer"
 var time_between_anims = 3
 var deltaTime = 0
@@ -11,8 +13,15 @@ var playersInRange = []
 var currentPlayerTarget = null
 
 var baseMoveSpeed = 3
-var moveAttackSpeed = 0.1
+var moveSwipeSpeed = 0.1
+var moveSmashSpeed = 0
 
+var swipeCoolDown = 3
+var smashCoolDown = 5
+var timeSinceSwipe = swipeCoolDown
+var timeSinceSmash = smashCoolDown
+
+var availableActions = ["swipe", "smash"]
 
 func auto_blender_import():
 	# Settings to import from Blender automatically
@@ -26,6 +35,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	timeSinceSwipe += delta
+	timeSinceSmash += delta
 	
 	if (currentPlayerTarget != null):
 		var targetPos = currentPlayerTarget.transform.origin
@@ -36,8 +47,24 @@ func _physics_process(delta):
 		var dist = position.distance_to(targetPos)
 		
 		if (dist < 2):
-			anim_tree["parameters/conditions/attack"] = true
-			velocity = moveDir * moveAttackSpeed
+			if (timeSinceSwipe > swipeCoolDown && availableActions.count("swipe") < 2):
+				availableActions.push_back("swipe")
+				timeSinceSwipe = 0
+
+			elif(timeSinceSmash > smashCoolDown && availableActions.count("smash") < 2):
+				availableActions.push_back("smash")
+				timeSinceSmash = 0
+			
+			var nextAction = availableActions.pick_random()
+			availableActions.erase(nextAction)
+			
+			if (nextAction == "swipe"):
+				anim_tree["parameters/conditions/swipe"] = true
+				velocity = moveDir * moveSwipeSpeed
+			elif (nextAction == "smash"):
+				anim_tree["parameters/conditions/smash"] = true
+				velocity = Vector3.ZERO
+			
 		else:
 			anim_tree["parameters/conditions/idle"] = false
 			anim_tree["parameters/conditions/walk"] = true
@@ -76,5 +103,9 @@ func _on_rigid_body_3d_body_exited(body):
 
 
 func _on_animation_tree_animation_finished(anim_name):
-	if (anim_name == "attack"):
-		anim_tree["parameters/conditions/attack"] = false
+	if (anim_name == "swipe"):
+		anim_tree["parameters/conditions/swipe"] = false
+		timeSinceSwipe = 0
+	elif(anim_name == "smash"):
+		anim_tree["parameters/conditions/smash"] = false
+		timeSinceSmash = 0
