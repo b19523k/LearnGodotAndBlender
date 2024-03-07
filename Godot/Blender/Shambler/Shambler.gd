@@ -13,15 +13,18 @@ var playersInRange = []
 var currentPlayerTarget = null
 
 var baseMoveSpeed = 3
-var moveSwipeSpeed = 0.1
-var moveSmashSpeed = 0
+var moveAttackSpeed = 0.2
 
-var swipeCoolDown = 3
-var smashCoolDown = 5
+var swipeCoolDown = 4
+var smashCoolDown = 6
+var shoveCoolDown = 0.5
+var throwCoolDown = 3
 var timeSinceSwipe = swipeCoolDown
 var timeSinceSmash = smashCoolDown
+var timeSinceShove = shoveCoolDown
+var timeSinceThrow = throwCoolDown
 
-var availableActions = ["swipe", "smash"]
+var availableActions = ["swipe", "smash", "shove"]
 
 func auto_blender_import():
 	# Settings to import from Blender automatically
@@ -37,6 +40,8 @@ func _ready():
 func _physics_process(delta):
 	timeSinceSwipe += delta
 	timeSinceSmash += delta
+	timeSinceShove += delta
+	timeSinceThrow += delta
 	
 	if (currentPlayerTarget != null):
 		var targetPos = currentPlayerTarget.transform.origin
@@ -45,26 +50,39 @@ func _physics_process(delta):
 		look_at(targetPos, Vector3.UP)
 		
 		var dist = position.distance_to(targetPos)
+		print(dist)
 		
-		if (dist < 2):
+		if (dist < 1.6):
 			if (timeSinceSwipe > swipeCoolDown && availableActions.count("swipe") < 2):
 				availableActions.push_back("swipe")
 				timeSinceSwipe = 0
-
 			elif(timeSinceSmash > smashCoolDown && availableActions.count("smash") < 2):
 				availableActions.push_back("smash")
 				timeSinceSmash = 0
+			elif(timeSinceShove > shoveCoolDown):
+				availableActions.push_back("shove")
+				timeSinceShove = 0
 			
 			var nextAction = availableActions.pick_random()
 			availableActions.erase(nextAction)
 			
 			if (nextAction == "swipe"):
 				anim_tree["parameters/conditions/swipe"] = true
-				velocity = moveDir * moveSwipeSpeed
+				velocity = moveDir * moveAttackSpeed
 			elif (nextAction == "smash"):
 				anim_tree["parameters/conditions/smash"] = true
-				velocity = Vector3.ZERO
-			
+				velocity = moveDir * moveAttackSpeed
+			elif (nextAction == "shove"):
+				anim_tree["parameters/conditions/shove"] = true
+				velocity = moveDir * moveAttackSpeed
+
+				
+		elif (dist > 6):
+			if (timeSinceThrow > throwCoolDown):
+				anim_tree["parameters/conditions/throw"] = true
+				velocity = Vector3.ZERO * 0
+			else:
+				velocity = moveDir * baseMoveSpeed
 		else:
 			anim_tree["parameters/conditions/idle"] = false
 			anim_tree["parameters/conditions/walk"] = true
@@ -109,3 +127,9 @@ func _on_animation_tree_animation_finished(anim_name):
 	elif(anim_name == "smash"):
 		anim_tree["parameters/conditions/smash"] = false
 		timeSinceSmash = 0
+	elif(anim_name == "shove"):
+		anim_tree["parameters/conditions/shove"] = false
+		timeSinceShove = 0
+	elif(anim_name == "throw"):
+		anim_tree["parameters/conditions/throw"] = false
+		timeSinceThrow = 0

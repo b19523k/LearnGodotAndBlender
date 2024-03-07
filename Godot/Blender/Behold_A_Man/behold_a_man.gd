@@ -21,6 +21,8 @@ var is_jumping = false
 var is_punching = false
 var speed = RUN_SPEED
 
+var timeOffFloor = 0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -54,13 +56,19 @@ func update_move_speed():
 		speed = PUNCH_SPEED
 
 func _physics_process(delta):
+	timeOffFloor += delta
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= gravity * delta * (1 + timeOffFloor)
+	else:
+		timeOffFloor = 0
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !is_jumping:
-		velocity.y = JUMP_VELOCITY
+		if (is_rolling):
+			velocity.y = JUMP_VELOCITY * 1.3
+		else:
+			velocity.y = JUMP_VELOCITY
 		
 	update_move_speed()
 
@@ -91,7 +99,7 @@ func update_animation_parameters(is_moving):
 		is_jumping = true
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
-	elif (Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
+	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
 		anim_tree["parameters/conditions/is_punching"] = true
 		is_punching = true
 		
