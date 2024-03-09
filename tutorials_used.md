@@ -30,3 +30,13 @@ Learn how to setup a animation state machine to control the player model while t
 ### Contents and timestamps
 
 - 00:00 - 07:00ish : setup the state machine, setup transition parameters, set transition parameters in code
+
+## Move Enemy Towards Player
+
+![image](tutorials_used/moveEnemyTowardsPlayer.png)
+
+## Dynamically Blending Animations
+
+source: <https://www.reddit.com/r/godot/comments/kivsez/dynamically_blending_animations/>
+
+![image](tutorials_used/dynamicallyBlendingAnimations.png)
