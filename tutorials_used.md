@@ -37,6 +37,10 @@ Learn how to setup a animation state machine to control the player model while t
 
 ## Dynamically Blending Animations
 
-source: <https://www.reddit.com/r/godot/comments/kivsez/dynamically_blending_animations/>
+### Tutorial Video
 
-![image](tutorials_used/dynamicallyBlendingAnimations.png)
+[Godot Quick Tip - How to use AnimationTrees](https://www.youtube.com/watch?v=WY2cN9uG6W8&ab_channel=Miziziziz)
+
+### Why watch it
+
+Learn how to blend animations, including seperating upper/lower body for things like aiming a gun while running.
