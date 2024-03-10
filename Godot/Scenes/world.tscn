@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://byon65lwt1g1a" path="res://Blender/Behold_A_Man/behold_a_man.tscn" id="1_44y18"]
 [ext_resource type="PackedScene" uid="uid://cubk2ikf6250l" path="res://Blender/Shiny_Cube/shiny_cube.tscn" id="2_6aaa6"]
 [ext_resource type="PackedScene" uid="uid://dio0rbiu6b0vp" path="res://Blender/Shiny_Cylinder/shiny_cylinder.blend" id="3_umnsu"]
-[ext_resource type="PackedScene" uid="uid://db7vb8rh2pnln" path="res://Blender/Shambler/BlendedShambler/BlendedShambler.tscn" id="5_dt4a4"]
+[ext_resource type="PackedScene" uid="uid://duiaq1x4eplqf" path="res://Blender/Shambler/Shambler.tscn" id="4_p5t3i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_js7qu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -181,5 +181,5 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -7, -4, -18)
 [node name="shiny_cube47" parent="Terrain" instance=ExtResource("2_6aaa6")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3, -4, -18)
 
-[node name="BlendedShambler" parent="." instance=ExtResource("5_dt4a4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+[node name="Shambler" parent="." instance=ExtResource("4_p5t3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92346, 0, 7.81154)

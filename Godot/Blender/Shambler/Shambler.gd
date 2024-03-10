@@ -9,6 +9,8 @@ var anim_player_rel_path = "../shambler/AnimationPlayer"
 var time_between_anims = 3
 var deltaTime = 0
 
+var timeOffFloor = 0
+
 var playersInRange = []
 var currentPlayerTarget = null
 
@@ -17,8 +19,8 @@ var moveAttackSpeed = 0.2
 
 var swipeCoolDown = 4
 var smashCoolDown = 6
-var shoveCoolDown = 1
-var throwCoolDown = 3
+var shoveCoolDown = 2
+var throwCoolDown = 4
 var timeSinceSwipe = swipeCoolDown
 var timeSinceSmash = smashCoolDown
 var timeSinceShove = shoveCoolDown
@@ -28,6 +30,9 @@ var timeSinceClose = 0
 var animating = false
 
 var availableActions = ["swipe", "smash", "shove"]
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func auto_blender_import():
 	# Settings to import from Blender automatically
@@ -41,18 +46,26 @@ func _ready():
 
 
 func _physics_process(delta):
+	timeOffFloor += delta
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta * (1 + timeOffFloor)
+	else:
+		timeOffFloor = 0
+	
 	timeSinceSwipe += delta
 	timeSinceSmash += delta
 	timeSinceShove += delta
 	timeSinceThrow += delta
 	timeSinceClose += delta
+
 	
 	if (currentPlayerTarget != null):
 		var targetPos = currentPlayerTarget.transform.origin
 		var moveDir = (targetPos - position).normalized()
 		
 		look_at(targetPos, Vector3.UP)
-		
+
 		var dist = position.distance_to(targetPos)
 		
 		if (timeSinceSwipe > swipeCoolDown && availableActions.count("swipe") < 3):
@@ -61,9 +74,10 @@ func _physics_process(delta):
 		if(timeSinceSmash > smashCoolDown && availableActions.count("smash") < 2):
 			availableActions.push_back("smash")
 			timeSinceSmash = 0
-		if(timeSinceShove > shoveCoolDown && availableActions.count("shove") < 1):
+		if((timeSinceShove > shoveCoolDown || dist < 1) && availableActions.count("shove") < 1):
 			availableActions.push_back("shove")
 			timeSinceShove = 0
+
 		print(availableActions)
 		
 		if (dist < 1.6):
@@ -79,6 +93,10 @@ func _physics_process(delta):
 				if (nextAction == "swipe"):
 					anim_tree["parameters/conditions/swipe"] = true
 				elif (nextAction == "smash"):
+					var smashAngle = 0
+					if (dist < 0.9):
+						smashAngle = .55
+					anim_tree["parameters/smash_blend/blend_position"] = smashAngle
 					anim_tree["parameters/conditions/smash"] = true
 					velocity = moveDir * moveAttackSpeed
 				elif (nextAction == "shove"):
@@ -146,7 +164,8 @@ func _on_animation_tree_animation_finished(anim_name):
 		anim_tree["parameters/conditions/swipe"] = false
 		timeSinceSwipe = 0
 		animating = false
-	elif(anim_name == "smash"):
+	elif(anim_name == "smash" || anim_name == "smash_down" || anim_name == "smash_up"): # Could also check if smash blend space completed?
+		anim_tree["parameters/smash_blend/blend_position"] = 0
 		anim_tree["parameters/conditions/smash"] = false
 		timeSinceSmash = 0
 		animating = false
