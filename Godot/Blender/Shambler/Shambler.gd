@@ -78,7 +78,7 @@ func _physics_process(delta):
 			availableActions.push_back("shove")
 			timeSinceShove = 0
 
-		print(availableActions)
+		#print(availableActions)
 		
 		if (dist < 1.6):
 			timeSinceClose = 0

@@ -91,6 +91,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_animation_parameters(is_moving):
+	var cameraAngle = rad_to_deg(spring_arm_pivot.global_rotation.y) + 180
+	var playerAngle = rad_to_deg(armature.global_rotation.y) + 180
+	var punchAngle = (playerAngle - cameraAngle)
+
+	if (punchAngle > 180):
+		punchAngle -= 360
+
+	print("")
+	print("frame")
+	print("camera: ", cameraAngle)
+	print("player: ", playerAngle)
+	print(" punch: ", punchAngle)
+
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
@@ -101,6 +114,7 @@ func update_animation_parameters(is_moving):
 		is_rolling = false
 	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
 		anim_tree["parameters/conditions/is_punching"] = true
+		anim_tree["parameters/punch/blend_position"] = deg_to_rad(punchAngle) * 100
 		is_punching = true
 		
 
@@ -113,7 +127,8 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
 		is_jumping = false
-	elif (anim_name == "punch"):
+	elif (["punch", "punch_l", "punch_r"].has(anim_name)):
+	#elif (anim_name == "punch.r" || anim_name == "punch.l" || anim_name == "punch"):
 		anim_tree["parameters/conditions/is_punching"] = false
 		is_punching = false
 
