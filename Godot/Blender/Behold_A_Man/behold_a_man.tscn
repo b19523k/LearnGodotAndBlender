@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://byon65lwt1g1a"]
 
 [ext_resource type="Script" path="res://Blender/Behold_A_Man/behold_a_man.gd" id="1_vqj8l"]
-[ext_resource type="PackedScene" uid="uid://bkge2how13ng0" path="res://Blender/Behold_A_Man/behold_a_man.blend" id="2_46lti"]
+[ext_resource type="PackedScene" uid="uid://jndxyo6m311g" path="res://Blender/Behold_A_Man/behold_a_man.blend" id="2_46lti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xvv84"]
 radius = 0.35
@@ -84,8 +84,6 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_vqj8l")
 
-[node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_xvv84")
@@ -104,5 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74175, 0)
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArmPivot/SpringArm3D"]
+
+[node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

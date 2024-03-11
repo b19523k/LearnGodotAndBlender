@@ -44,9 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00413752, 0.985527, -1.003
 [node name="shiny_cylinder" parent="." instance=ExtResource("3_umnsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
 
-[node name="BeholdAMan" parent="." instance=ExtResource("1_44y18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0561199, 0, 3)
-
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="shiny_cube4" parent="Terrain" instance=ExtResource("2_6aaa6")]
@@ -183,3 +180,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3, -4, -18)
 
 [node name="Shambler" parent="." instance=ExtResource("4_p5t3i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92346, 0, 7.81154)
+
+[node name="BeholdAMan" parent="." instance=ExtResource("1_44y18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)

@@ -44,3 +44,15 @@ Learn how to setup a animation state machine to control the player model while t
 ### Why watch it
 
 Learn how to blend animations, including seperating upper/lower body for things like aiming a gun while running.
+
+## Link Bone To Deform Model
+
+[Assign Vertext Group To Specific Bone | Blender Rig Tutorial](https://www.youtube.com/watch?v=P47IpDEj2Y4&ab_channel=Himel356)
+
+### Why Watch it
+
+Quick explaination on how to create a vertex group, and link it to a bone for model deformation during posing / animating.
+
+### Too Long, Didn't Watch
+
+In edit mode on the model geometry, select a group vertexs, press ctrl+g, and "Assign to new vertex group". Name the vertex group in the "Data" tab on the bottom right (3 green boxes linked by green lines in inverted diamond formation). Set the bone to have the same name as the vertex group, and the bone will deform the vertex group when moved.

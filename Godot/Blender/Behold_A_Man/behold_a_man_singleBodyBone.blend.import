@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://jndxyo6m311g"
-path="res://.godot/imported/behold_a_man.blend-0323af18fcca9e7dddf753b576b7458e.scn"
+uid="uid://bkge2how13ng0"
+path="res://.godot/imported/behold_a_man_singleBodyBone.blend-47b9e7a78b461e9f75e776f1899092ef.scn"
 
 [deps]
 
-source_file="res://Blender/Behold_A_Man/behold_a_man.blend"
-dest_files=["res://.godot/imported/behold_a_man.blend-0323af18fcca9e7dddf753b576b7458e.scn"]
+source_file="res://Blender/Behold_A_Man/behold_a_man_singleBodyBone.blend"
+dest_files=["res://.godot/imported/behold_a_man_singleBodyBone.blend-47b9e7a78b461e9f75e776f1899092ef.scn"]
 
 [params]
 
