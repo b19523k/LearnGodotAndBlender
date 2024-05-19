@@ -61,4 +61,4 @@ In edit mode on the model geometry, select a group vertexs, press ctrl+g, and "A
 
 Editor -> Editor Settings -> FileSystem -> Import -> Blender 3 Path
 
-[Image](tutorials_used/godot_on_macos.png)
+![Image](tutorials_used/godot_on_macos.png)
