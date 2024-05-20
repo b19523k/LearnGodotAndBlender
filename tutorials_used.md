@@ -62,3 +62,13 @@ In edit mode on the model geometry, select a group vertexs, press ctrl+g, and "A
 Editor -> Editor Settings -> FileSystem -> Import -> Blender 3 Path
 
 ![Image](tutorials_used/godot_on_macos.png)
+
+## Use Multiple GitHub Accounts From One Computer
+
+### Tutorial Link
+
+https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3#file-work-with-multiple-github-accounts-md
+
+### Why read it
+
+In the case you have a GitHub account and want a seperate GitHub account specifically for game dev.
