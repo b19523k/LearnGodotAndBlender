@@ -56,3 +56,19 @@ Quick explaination on how to create a vertex group, and link it to a bone for mo
 ### Too Long, Didn't Watch
 
 In edit mode on the model geometry, select a group vertexs, press ctrl+g, and "Assign to new vertex group". Name the vertex group in the "Data" tab on the bottom right (3 green boxes linked by green lines in inverted diamond formation). Set the bone to have the same name as the vertex group, and the bone will deform the vertex group when moved.
+
+## Add Blender To Editor Settings in MacOs
+
+Editor -> Editor Settings -> FileSystem -> Import -> Blender 3 Path
+
+![Image](tutorials_used/godot_on_macos.png)
+
+## Use Multiple GitHub Accounts From One Computer
+
+### Tutorial Link
+
+https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3#file-work-with-multiple-github-accounts-md
+
+### Why read it
+
+In the case you have a GitHub account and want a seperate GitHub account specifically for game dev.
