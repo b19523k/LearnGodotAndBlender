@@ -20,6 +20,7 @@ var is_rolling = false
 var is_jumping = false
 var is_punching = false
 var speed = RUN_SPEED
+var is_pooing = false
 
 var timeOffFloor = 0
 
@@ -96,13 +97,10 @@ func update_animation_parameters(is_moving):
 	var punchAngle = (playerAngle - cameraAngle)
 
 	if (punchAngle > 180):
-		punchAngle -= 360
+		punchAngle = -45
 
-	print("")
-	print("frame")
-	print("camera: ", cameraAngle)
-	print("player: ", playerAngle)
-	print(" punch: ", punchAngle)
+	if (punchAngle < -180):
+		punchAngle = 45
 
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
@@ -116,7 +114,9 @@ func update_animation_parameters(is_moving):
 		anim_tree["parameters/conditions/is_punching"] = true
 		anim_tree["parameters/punch/blend_position"] = deg_to_rad(punchAngle) * 100
 		is_punching = true
-		
+	elif (Input.is_action_just_pressed("poo")):
+		anim_tree["parameters/conditions/is_pooing"] = true
+		is_pooing = true
 
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
@@ -131,4 +131,7 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	#elif (anim_name == "punch.r" || anim_name == "punch.l" || anim_name == "punch"):
 		anim_tree["parameters/conditions/is_punching"] = false
 		is_punching = false
+	elif (anim_name == "punch_001"):
+		anim_tree["parameters/conditions/is_pooing"] = false
+		is_pooing = false
 
