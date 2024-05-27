@@ -72,3 +72,23 @@ https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3#file-work-wi
 ### Why read it
 
 In the case you have a GitHub account and want a seperate GitHub account specifically for game dev.
+
+## Add SkeletonIK3D To Imported Blender Model
+
+### Tutorial Link
+
+https://www.youtube.com/watch?v=-JMKR2sjlkY&list=PLqbBeBobXe08DLRMDMyY2YXLx-Q4R9Ujl&index=5
+
+### Contents and timestamps
+
+- 0:00 - 1:09 : Add and configure the Godot SkeletonIK3D node
+
+### Why watch it
+
+The SkeletonIK3D Godot node is needed to layer player input control of a model ontop of an animation key framed in Blender. First minute of video is used as a quick reference on how to use a SkeletonIK3D. The rest of the video is not used atm.
+
+SkeletonIK3D allows character upper body to aim towards where the camera is pointed, effectively "aiming" the characters upper body seperately from the legs. Used to give more control to the player.
+
+### How it's used in this project
+
+The SkeletonIK3D element is used to control the two spine bones to cause the upper body to twist to face the camera. The SkeletonIK3Ds target is set to a node3d which has it's rotation controlled in script to combie the x rotation of the cameras spring arm and the y rotation of the cameras spring arm pivot.

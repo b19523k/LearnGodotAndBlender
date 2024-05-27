@@ -5,6 +5,8 @@ extends CharacterBody3D
 @onready var armature = $behold_a_man/Armature
 @onready var skeleton = $behold_a_man/Armature/Skeleton3D
 @onready var anim_tree = $AnimationTree
+@onready var upperbody_ik = $behold_a_man/Armature/Skeleton3D/spine_ik
+@onready var upperbody_ik_target = $upperbody_ik_target
 
 var anim_player_rel_path = "../behold_a_man/AnimationPlayer"
 
@@ -34,6 +36,9 @@ func auto_blender_import():
 	
 func _ready():
 	auto_blender_import()
+
+	upperbody_ik_target.match_rotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
+	upperbody_ik.start()
 	
 	# Other ready settings
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -47,6 +52,7 @@ func _unhandled_input(event):
 		spring_arm_pivot.rotate_y(-event.relative.x * 0.005)
 		spring_arm.rotate_x(-event.relative.y * 0.005)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
+		upperbody_ik_target.match_rotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
 
 func update_move_speed():
 	speed = RUN_SPEED
@@ -92,9 +98,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func update_animation_parameters(is_moving):
-	var cameraAngle = rad_to_deg(spring_arm_pivot.global_rotation.y) + 180
+	# Punch angle is no longer used and can be removed
+	var cameraAngleY = rad_to_deg(spring_arm_pivot.global_rotation.y) + 180
 	var playerAngle = rad_to_deg(armature.global_rotation.y) + 180
-	var punchAngle = (playerAngle - cameraAngle)
+	var punchAngle = (playerAngle - cameraAngleY)
 
 	if (punchAngle > 180):
 		punchAngle = -45
@@ -105,6 +112,7 @@ func update_animation_parameters(is_moving):
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
+		# upperbody_ik.stop()
 	elif (Input.is_action_just_pressed("jump")):
 		anim_tree["parameters/conditions/is_jumping"] = true
 		is_jumping = true
@@ -112,7 +120,8 @@ func update_animation_parameters(is_moving):
 		is_rolling = false
 	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
 		anim_tree["parameters/conditions/is_punching"] = true
-		anim_tree["parameters/punch/blend_position"] = deg_to_rad(punchAngle) * 100
+		# anim_tree["parameters/punch/blend_position"] = deg_to_rad(punchAngle) * 100
+		anim_tree["parameters/punch/blend_position"] = 0
 		is_punching = true
 	elif (Input.is_action_just_pressed("poo")):
 		anim_tree["parameters/conditions/is_pooing"] = true
@@ -124,6 +133,8 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	if (anim_name == "roll"):
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
+		# upperbody_ik.start()
+		# upperbody_ik.start(true)
 	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
 		is_jumping = false
