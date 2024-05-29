@@ -112,7 +112,7 @@ func update_animation_parameters(is_moving):
 	if (is_moving && Input.is_action_just_pressed("roll")):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
-		# upperbody_ik.stop()
+		upperbody_ik.stop()
 	elif (Input.is_action_just_pressed("jump")):
 		anim_tree["parameters/conditions/is_jumping"] = true
 		is_jumping = true
@@ -133,7 +133,7 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	if (anim_name == "roll"):
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
-		# upperbody_ik.start()
+		upperbody_ik.start()
 		# upperbody_ik.start(true)
 	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
