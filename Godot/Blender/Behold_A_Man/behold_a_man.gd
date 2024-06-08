@@ -19,10 +19,13 @@ const PUNCH_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 
 var is_rolling = false
+var not_rolling = true
+
 var is_jumping = false
 var is_punching = false
 var speed = RUN_SPEED
-var is_pooing = false
+
+var is_blocking = false
 
 var timeOffFloor = 0
 
@@ -37,7 +40,7 @@ func auto_blender_import():
 func _ready():
 	auto_blender_import()
 
-	upperbody_ik_target.match_rotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
+	upperbody_ik_target.setRotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
 	upperbody_ik.start()
 	
 	# Other ready settings
@@ -51,8 +54,8 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		spring_arm_pivot.rotate_y(-event.relative.x * 0.005)
 		spring_arm.rotate_x(-event.relative.y * 0.005)
-		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
-		upperbody_ik_target.match_rotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
+		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/3, PI/4)
+		upperbody_ik_target.setRotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
 
 func update_move_speed():
 	speed = RUN_SPEED
@@ -93,56 +96,58 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 		velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
 		
-	anim_tree.set("parameters/BlendSpace1D/blend_position", velocity.length() / speed)
+	anim_tree.set("parameters/BlendTree/BlendSpace1D/blend_position", velocity.length() / speed)
 
 	move_and_slide()
 
 func update_animation_parameters(is_moving):
-	# Punch angle is no longer used and can be removed
-	var cameraAngleY = rad_to_deg(spring_arm_pivot.global_rotation.y) + 180
-	var playerAngle = rad_to_deg(armature.global_rotation.y) + 180
-	var punchAngle = (playerAngle - cameraAngleY)
 
-	if (punchAngle > 180):
-		punchAngle = -45
+	# anim_tree["parameters/conditions/is_blocking"] = false
+	# is_blocking = false
 
-	if (punchAngle < -180):
-		punchAngle = 45
-
-	if (is_moving && Input.is_action_just_pressed("roll")):
+	if (is_moving && Input.is_action_just_pressed("roll") && !is_jumping && !is_punching):
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
+		not_rolling = false
 		upperbody_ik.stop()
-	elif (Input.is_action_just_pressed("jump")):
+	elif (Input.is_action_just_pressed("jump") && !is_punching):
 		anim_tree["parameters/conditions/is_jumping"] = true
 		is_jumping = true
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
+		not_rolling = true
 	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
 		anim_tree["parameters/conditions/is_punching"] = true
-		# anim_tree["parameters/punch/blend_position"] = deg_to_rad(punchAngle) * 100
-		anim_tree["parameters/punch/blend_position"] = 0
 		is_punching = true
-	elif (Input.is_action_just_pressed("poo")):
-		anim_tree["parameters/conditions/is_pooing"] = true
-		is_pooing = true
-
+	elif (Input.is_action_just_released("block")):
+		# anim_tree["parameters/conditions/is_blocking"] = false
+		# anim_tree["parameters/conditions/not_blocking"] = true
+		is_blocking = false
+		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 0)
+	elif (Input.is_action_pressed("block")):
+		# anim_tree["parameters/conditions/is_blocking"] = true
+		# anim_tree["parameters/conditions/not_blocking"] = false
+		is_blocking = true
+		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 1)
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
-	#print("anim end: " + anim_name)
+	print("animation ended: ", anim_name)
 	if (anim_name == "roll"):
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
+		not_rolling = true
 		upperbody_ik.start()
-		# upperbody_ik.start(true)
 	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
 		is_jumping = false
+		upperbody_ik.start()
 	elif (["punch", "punch_l", "punch_r"].has(anim_name)):
-	#elif (anim_name == "punch.r" || anim_name == "punch.l" || anim_name == "punch"):
 		anim_tree["parameters/conditions/is_punching"] = false
 		is_punching = false
-	elif (anim_name == "punch_001"):
-		anim_tree["parameters/conditions/is_pooing"] = false
-		is_pooing = false
 
+
+
+func _on_animation_tree_animation_started(anim_name:StringName):
+	print("animation started: ", anim_name)
+	# if (anim_name == "roll"):
+	# 	is_rolling = false
