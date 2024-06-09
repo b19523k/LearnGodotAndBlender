@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var armature = $behold_a_man/Armature
 @onready var skeleton = $behold_a_man/Armature/Skeleton3D
 @onready var anim_tree = $AnimationTree
+@onready var anim_state_tree = $AnimationTree.get("parameters/playback")
 @onready var upperbody_ik = $behold_a_man/Armature/Skeleton3D/spine_ik
 @onready var upperbody_ik_target = $upperbody_ik_target
 
@@ -19,7 +20,6 @@ const PUNCH_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 
 var is_rolling = false
-var not_rolling = true
 
 var is_jumping = false
 var is_punching = false
@@ -54,7 +54,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		spring_arm_pivot.rotate_y(-event.relative.x * 0.005)
 		spring_arm.rotate_x(-event.relative.y * 0.005)
-		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/3, PI/4)
+		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/2, PI/4)
 		upperbody_ik_target.setRotation(spring_arm.rotation.x, spring_arm_pivot.rotation.y)
 
 func update_move_speed():
@@ -102,52 +102,52 @@ func _physics_process(delta):
 
 func update_animation_parameters(is_moving):
 
-	# anim_tree["parameters/conditions/is_blocking"] = false
-	# is_blocking = false
-
-	if (is_moving && Input.is_action_just_pressed("roll") && !is_jumping && !is_punching):
+	if (is_moving && Input.is_action_just_pressed("roll") && !is_jumping && !is_punching && !is_rolling):
+		upperbody_ik.stop()
 		anim_tree["parameters/conditions/is_rolling"] = true
 		is_rolling = true
-		not_rolling = false
-		upperbody_ik.stop()
-	elif (Input.is_action_just_pressed("jump") && !is_punching):
-		anim_tree["parameters/conditions/is_jumping"] = true
-		is_jumping = true
+	elif (Input.is_action_just_pressed("jump") && !is_punching && !is_jumping):
+		if (is_rolling):
+			anim_state_tree.travel("jump", false)
+			upperbody_ik.start()
+		else:
+			anim_tree["parameters/conditions/is_jumping"] = true
 		anim_tree["parameters/conditions/is_rolling"] = false
+		is_jumping = true
 		is_rolling = false
-		not_rolling = true
-	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling):
+	elif (is_moving && Input.is_action_just_pressed("primary") && !is_jumping && !is_rolling && !is_punching):
 		anim_tree["parameters/conditions/is_punching"] = true
 		is_punching = true
 	elif (Input.is_action_just_released("block")):
-		# anim_tree["parameters/conditions/is_blocking"] = false
-		# anim_tree["parameters/conditions/not_blocking"] = true
 		is_blocking = false
-		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 0)
 	elif (Input.is_action_pressed("block")):
-		# anim_tree["parameters/conditions/is_blocking"] = true
-		# anim_tree["parameters/conditions/not_blocking"] = false
 		is_blocking = true
+
+	if (is_blocking):
 		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 1)
+	else:
+		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 0)
+
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
-	print("animation ended: ", anim_name)
+	# print("animation ended: ", anim_name)
 	if (anim_name == "roll"):
 		anim_tree["parameters/conditions/is_rolling"] = false
 		is_rolling = false
-		not_rolling = true
 		upperbody_ik.start()
 	elif (anim_name == "jump"):
 		anim_tree["parameters/conditions/is_jumping"] = false
 		is_jumping = false
 		upperbody_ik.start()
-	elif (["punch", "punch_l", "punch_r"].has(anim_name)):
+	elif (anim_name == "punch"):
 		anim_tree["parameters/conditions/is_punching"] = false
 		is_punching = false
 
+	if (is_blocking):
+		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 1)
+	else:
+		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 0)
+	anim_state_tree.travel("BlendTree", false)
 
-
-func _on_animation_tree_animation_started(anim_name:StringName):
-	print("animation started: ", anim_name)
-	# if (anim_name == "roll"):
-	# 	is_rolling = false
+# func _on_animation_tree_animation_started(anim_name:StringName):
+# 	print("animation started: ", anim_name)
