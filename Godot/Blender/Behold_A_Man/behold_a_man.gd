@@ -90,6 +90,7 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction = direction.rotated(Vector3.UP, spring_arm_pivot.rotation.y)
 	update_animation_parameters(direction)
+
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * speed, LERP_VAL)
 		velocity.z = lerp(velocity.z, direction.z * speed, LERP_VAL)
@@ -97,6 +98,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 		velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
+		var lerpY = lerp_angle(armature.rotation.y, spring_arm_pivot.rotation.y, LERP_VAL)
+		var yDiff = snappedf(lerpY - armature.rotation.y, 0.001)
+		if (yDiff != 0):
+			armature.rotation.y = lerpY
+			print("play turn animation")
 		
 	anim_tree.set("parameters/BlendTree/BlendSpace1D/blend_position", velocity.length() / speed)
 

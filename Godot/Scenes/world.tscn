@@ -479,7 +479,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 9, -4, 21.5971)
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13, -4, 21.5971)
 
 [node name="Shambler" parent="." instance=ExtResource("4_p5t3i")]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0.00169297, 0, -0.00169297, 0.999999, -32.789, 0, 7.81154)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0.00169297, 0, -0.00169297, 0.999999, -4.789, 0, 7.81154)
 
 [node name="shiny_cube61" parent="." instance=ExtResource("2_6aaa6")]
 transform = Transform3D(4, 0, 0, 0, 1.37464, 3.75638, 0, -3.75638, 1.37464, -7, -3.22867, 26.6616)

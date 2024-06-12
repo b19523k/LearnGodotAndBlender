@@ -1547,39 +1547,37 @@ spring_length = 3.0
 [node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
 
 [node name="Skeleton3D" parent="behold_a_man/Armature" index="0"]
-bones/0/position = Vector3(-8.13292e-09, 0.97634, 0.0426924)
-bones/0/rotation = Quaternion(0.0938886, 1.19801e-07, -4.91102e-09, 0.995583)
+bones/0/position = Vector3(2.71229e-10, 0.964503, 0.00184244)
+bones/0/rotation = Quaternion(0.106853, 1.1674e-07, -2.45754e-08, 0.994275)
 bones/1/rotation = Quaternion(0.0293753, 0.00322833, 0.00777293, 0.999533)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.113219, -0.0883019, -0.0126094, 0.989558)
-bones/3/rotation = Quaternion(0.0693268, 0.403123, 0.897976, -0.162248)
+bones/2/rotation = Quaternion(0.13812, 2.29768e-10, 2.39744e-08, 0.990416)
+bones/3/rotation = Quaternion(-0.0430798, -0.224245, 0.958421, -0.171138)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.124335, -0.00523563, -0.151241, 0.980632)
-bones/5/rotation = Quaternion(0.0811694, -0.399383, 0.896451, 0.174013)
+bones/4/rotation = Quaternion(0.124291, -0.00620565, -0.143584, 0.981783)
+bones/5/rotation = Quaternion(-0.0432365, 0.237024, 0.952216, 0.187709)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.124321, 0.0055709, 0.148596, 0.981037)
+bones/6/rotation = Quaternion(0.124439, 0.00128597, 0.182294, 0.975337)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.0244498, -0.00487336, 0.998322, -0.0522635)
+bones/7/rotation = Quaternion(-0.0602779, 0.270225, 0.95941, -0.0536478)
 bones/7/scale = Vector3(1.00006, 1, 1.00002)
-bones/8/rotation = Quaternion(-0.401968, 0.000252278, -0.0249757, 0.915313)
+bones/8/rotation = Quaternion(-0.179074, 0.000271447, -0.0111264, 0.983773)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.460228, 0.0444022, -0.0675193, 0.884115)
+bones/9/rotation = Quaternion(0.601851, -0.087459, -0.0127522, 0.793703)
 bones/9/scale = Vector3(1.00003, 0.999993, 0.999998)
-bones/10/rotation = Quaternion(-0.0850609, 0.495192, 0.862879, 0.0546751)
+bones/10/rotation = Quaternion(-0.00445945, 0.112691, 0.990379, 0.0801879)
 bones/10/scale = Vector3(1.00006, 1, 1.00001)
-bones/11/rotation = Quaternion(-0.443265, -0.000246882, 0.0275415, 0.895968)
+bones/11/rotation = Quaternion(-0.571333, -0.000225429, 0.0354989, 0.81995)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.714538, -0.0553469, 0.0923481, 0.691263)
+bones/12/rotation = Quaternion(0.415563, -0.105464, 0.0570803, 0.901625)
 bones/12/scale = Vector3(1, 1, 1.00002)
-bones/13/position = Vector3(0.129989, 0.0337773, 0.482938)
+bones/13/position = Vector3(0.129863, 0.0337952, 0.482925)
 bones/13/rotation = Quaternion(-0.0313898, 0.70641, 0.70641, -0.0313898)
-bones/14/position = Vector3(0.16472, 0.310877, -0.447134)
-bones/14/rotation = Quaternion(-0.0069488, 0.983137, -0.178693, 0.038231)
-bones/14/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(0.16472, 0.0980253, 0.129848)
+bones/14/rotation = Quaternion(-0.0292221, 0.658626, -0.751467, 0.0256118)
 bones/15/position = Vector3(-0.220411, -0.0522673, 0.60279)
-bones/16/position = Vector3(-0.16472, 0.239656, 0.337178)
-bones/16/rotation = Quaternion(-1.77287e-05, 0.548624, -0.835208, -0.0379548)
-bones/16/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-0.16472, 0.368431, -0.429943)
+bones/16/rotation = Quaternion(0.00251026, 0.998248, -0.0452379, -0.0380675)
 
 [node name="spine_ik" type="SkeletonIK3D" parent="behold_a_man/Armature/Skeleton3D" index="1"]
 process_priority = 1
@@ -1593,7 +1591,7 @@ callback_mode_process = 0
 callback_mode_method = 1
 
 [node name="upperbody_ik_target" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.926, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("3_kkbxs")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
