@@ -95,6 +95,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, LERP_VAL)
 		velocity.z = lerp(velocity.z, direction.z * speed, LERP_VAL)
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-velocity.x, -velocity.z), LERP_VAL)
+		anim_tree.set("parameters/BlendTree/Blend3/blend_amount", 0)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 		velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
@@ -102,7 +103,11 @@ func _physics_process(delta):
 		var yDiff = snappedf(lerpY - armature.rotation.y, 0.001)
 		if (yDiff != 0):
 			armature.rotation.y = lerpY
-			print("play turn animation")
+			var clampedYDiff = clampf(yDiff * 10, -1 , 1)
+			anim_tree.set("parameters/BlendTree/Blend3/blend_amount", clampedYDiff)
+		else:
+			anim_tree.set("parameters/BlendTree/Blend3/blend_amount", 0)
+
 		
 	anim_tree.set("parameters/BlendTree/BlendSpace1D/blend_position", velocity.length() / speed)
 
