@@ -109,7 +109,7 @@ func _physics_process(delta):
 			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", 0)
 
 		
-	anim_tree.set("parameters/upperLowerBlend/BlendSpace1D/blend_position", velocity.length() / speed)
+	anim_tree.set("parameters/upperLowerBlend/idleRunBlend/blend_position", velocity.length() / speed)
 
 	move_and_slide()
 
@@ -133,6 +133,7 @@ func update_animation_parameters(is_moving):
 		anim_tree.set("parameters/upperLowerBlend/blockBlend/blend_amount", 1)
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
+	print("animation ended: " , anim_name)
 	if (anim_name == "roll"):
 		is_rolling = false
 		roll_started = false
