@@ -95,7 +95,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, LERP_VAL)
 		velocity.z = lerp(velocity.z, direction.z * speed, LERP_VAL)
 		armature.rotation.y = lerp_angle(armature.rotation.y, atan2(-velocity.x, -velocity.z), LERP_VAL)
-		anim_tree.set("parameters/BlendTree/Blend3/blend_amount", 0)
+		anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", 0)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 		velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
@@ -103,13 +103,13 @@ func _physics_process(delta):
 		var yDiff = snappedf(lerpY - armature.rotation.y, 0.001)
 		if (yDiff != 0):
 			armature.rotation.y = lerpY
-			var clampedYDiff = clampf(yDiff * 10, -1 , 1)
-			anim_tree.set("parameters/BlendTree/Blend3/blend_amount", clampedYDiff)
+			var clampedYDiff = clampf(yDiff * 20, -1 , 1)
+			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", clampedYDiff)
 		else:
-			anim_tree.set("parameters/BlendTree/Blend3/blend_amount", 0)
+			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", 0)
 
 		
-	anim_tree.set("parameters/BlendTree/BlendSpace1D/blend_position", velocity.length() / speed)
+	anim_tree.set("parameters/upperLowerBlend/BlendSpace1D/blend_position", velocity.length() / speed)
 
 	move_and_slide()
 
@@ -127,10 +127,10 @@ func update_animation_parameters(is_moving):
 		is_punching = true
 	elif (Input.is_action_just_released("block")):
 		is_blocking = false
-		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 0)
+		anim_tree.set("parameters/upperLowerBlend/blockBlend/blend_amount", 0)
 	elif (Input.is_action_pressed("block")):
 		is_blocking = true
-		anim_tree.set("parameters/BlendTree/Blend2/blend_amount", 1)
+		anim_tree.set("parameters/upperLowerBlend/blockBlend/blend_amount", 1)
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
 	if (anim_name == "roll"):
