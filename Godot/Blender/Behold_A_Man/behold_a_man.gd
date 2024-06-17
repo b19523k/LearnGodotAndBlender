@@ -103,7 +103,7 @@ func _physics_process(delta):
 		var yDiff = snappedf(lerpY - armature.rotation.y, 0.001)
 		if (yDiff != 0):
 			armature.rotation.y = lerpY
-			var clampedYDiff = clampf(yDiff * 20, -1 , 1)
+			var clampedYDiff = clampf(yDiff * 50, -1 , 1)
 			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", clampedYDiff)
 		else:
 			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", 0)

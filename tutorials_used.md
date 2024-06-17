@@ -61,6 +61,8 @@ In edit mode on the model geometry, select a group vertexs, press ctrl+g, and "A
 
 Editor -> Editor Settings -> FileSystem -> Import -> Blender 3 Path
 
+/Applications/Blender.app/Contents/MacOS
+
 ![Image](tutorials_used/godot_on_macos.png)
 
 ## Use Multiple GitHub Accounts From One Computer
@@ -92,3 +94,14 @@ SkeletonIK3D allows character upper body to aim towards where the camera is poin
 ### How it's used in this project
 
 The SkeletonIK3D element is used to control the two spine bones to cause the upper body to twist to face the camera. The SkeletonIK3Ds target is set to a node3d which has it's rotation controlled in script to combie the x rotation of the cameras spring arm and the y rotation of the cameras spring arm pivot.
+
+
+## Flip an Action (Animation) in Blender
+
+### Link to StackOverflow Post
+
+https://blender.stackexchange.com/a/67710
+
+### How it was used in this project
+
+Created an animation for the player stepping to the left, and then duplicated it. Selected all key frames in the duplicate, and then ctrl + c to copy them, and ctrl + shift + v to flip them, resulting in a perfectly mirrored animation of the player stepping to the right.
