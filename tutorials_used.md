@@ -95,7 +95,6 @@ SkeletonIK3D allows character upper body to aim towards where the camera is poin
 
 The SkeletonIK3D element is used to control the two spine bones to cause the upper body to twist to face the camera. The SkeletonIK3Ds target is set to a node3d which has it's rotation controlled in script to combie the x rotation of the cameras spring arm and the y rotation of the cameras spring arm pivot.
 
-
 ## Flip an Action (Animation) in Blender
 
 ### Link to StackOverflow Post
@@ -105,3 +104,13 @@ https://blender.stackexchange.com/a/67710
 ### How it was used in this project
 
 Created an animation for the player stepping to the left, and then duplicated it. Selected all key frames in the duplicate, and then ctrl + c to copy them, and ctrl + shift + v to flip them, resulting in a perfectly mirrored animation of the player stepping to the right.
+
+## Make Collider Follow Bone
+
+## Link to StackOverflow Post
+
+https://stackoverflow.com/a/68959644
+
+### Why use it
+
+Can be used to make a pretty accurate hitbox by having a collider shape for each bone of a model. Add a BoneAttachment3D, either directly to a skeleton or set the external skeleton property. Add a RigidBody3D as a child of the BoneAttachment3D. Turn on 'Contact Monitor' on the RigidBody3D and set 'Max Contacts Reported' to at least 3 under Solver of the RigidBody3D. Add one or more CollisionShape3Ds as children of the RigidBody3D.
