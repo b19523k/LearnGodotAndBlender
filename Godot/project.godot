@@ -83,8 +83,10 @@ block={
 [layer_names]
 
 3d_physics/layer_1="Terrain"
-3d_physics/layer_2="Players"
-3d_physics/layer_3="Enemies"
+3d_physics/layer_2="Players_ColliderBox"
+3d_physics/layer_3="Enemies_ColliderBox"
+3d_physics/layer_4="Players_HitBox"
+3d_physics/layer_5="Enemies_HitBox"
 
 [rendering]
 

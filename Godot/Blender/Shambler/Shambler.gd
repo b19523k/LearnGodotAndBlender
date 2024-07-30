@@ -177,3 +177,4 @@ func _on_animation_tree_animation_finished(anim_name):
 		anim_tree["parameters/conditions/throw"] = false
 		timeSinceThrow = 0
 		animating = false
+

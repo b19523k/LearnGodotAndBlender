@@ -12,11 +12,12 @@ var anim_player_rel_path = "../behold_a_man/AnimationPlayer"
 
 
 const LERP_VAL = .15
+# const LERP_VAL = 1
 
 const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
 const PUNCH_SPEED = 1.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 10
 
 var is_rolling = false
 var roll_started = false
@@ -71,7 +72,7 @@ func _physics_process(delta):
 	timeOffFloor += delta
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta * (1 + timeOffFloor)
+		velocity.y -= gravity * delta * (2 + timeOffFloor)
 	else:
 		timeOffFloor = 0
 		
@@ -99,10 +100,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
 		velocity.z = lerp(velocity.z, 0.0, LERP_VAL)
-		var lerpY = lerp_angle(armature.rotation.y, spring_arm_pivot.rotation.y, LERP_VAL)
+		var lerpYOne = lerp_angle(armature.rotation.y, spring_arm_pivot.rotation.y, 1) # Need to detect if rotation diff is half a circle (0.5 rad)
+		var lerpYTriple = lerp_angle(armature.rotation.y, spring_arm_pivot.rotation.y, LERP_VAL * 3) # Need to detect if rotation diff is half a circle (0.5 rad)
+		var lerpY = lerp_angle(armature.rotation.y, spring_arm_pivot.rotation.y, LERP_VAL) # Need to detect if rotation diff is half a circle (0.5 rad)
 		var yDiff = snappedf(lerpY - armature.rotation.y, 0.001)
+		# print(yDiff)
 		if (yDiff != 0):
-			armature.rotation.y = lerpY
+			armature.rotation.y = lerpY if abs(yDiff) < LERP_VAL * 2 else lerpYTriple if abs(yDiff) < LERP_VAL * 3 else lerpYOne
+			# armature.rotation.y = lerpYOne
+			# armature.rotation.y = lerpY
 			var clampedYDiff = clampf(yDiff * 50, -1 , 1)
 			anim_tree.set("parameters/upperLowerBlend/turnBlend/blend_amount", clampedYDiff)
 		else:
@@ -133,7 +139,7 @@ func update_animation_parameters(is_moving):
 		anim_tree.set("parameters/upperLowerBlend/blockBlend/blend_amount", 1)
 
 func _on_animation_tree_animation_finished(anim_name): # this needs to be linked to the animation tree
-	print("animation ended: " , anim_name)
+	# print("animation ended: " , anim_name)
 	if (anim_name == "roll"):
 		is_rolling = false
 		roll_started = false
@@ -149,10 +155,13 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 		punch_started = false
 
 func _on_animation_tree_animation_started(anim_name:StringName):
-	print("animation started: ", anim_name)
+	# print("animation started: ", anim_name)
 	if (anim_name == "punch"):
 		punch_started = true
 	elif (anim_name == "jump"):
 		jump_started = true
 	elif (anim_name == "roll"):
 		roll_started = true
+
+func _on_punch_rigid_body_3d_hitbox_entered(collidedWith:Node):
+	print("fist hit shambler")
