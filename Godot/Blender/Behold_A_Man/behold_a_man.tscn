@@ -2003,7 +2003,7 @@ override_tip_basis = false
 target_node = NodePath("../../../../upperbody_ik_target")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.962088, -0.263109, 0.0718326, 0.272738, -0.928118, 0.253398, -2.02446e-06, 0.263382, 0.964691, -0.278967, 1.24649, -0.0374554)
+transform = Transform3D(-0.962088, -0.26311, 0.0718328, 0.272739, -0.928118, 0.253397, -1.97487e-06, 0.263382, 0.964692, -0.278967, 1.24649, -0.0374554)
 bone_name = "lowerarm.r"
 bone_idx = 6
 
