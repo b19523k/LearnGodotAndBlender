@@ -26,13 +26,13 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="shiny_cube" parent="." instance=ExtResource("2_6aaa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822874, -0.0212143, -1.43316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488242, -0.0212143, -1.46955)
 
 [node name="shiny_cube3" parent="." instance=ExtResource("2_6aaa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827576, 1.00147, -2.42948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.492944, 1.00147, -2.46587)
 
 [node name="shiny_cube4" parent="." instance=ExtResource("2_6aaa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837684, 1.94328, -3.46295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503052, 1.94328, -3.49934)
 
 [node name="Terrain" type="Node3D" parent="."]
 
@@ -402,5 +402,11 @@ transform = Transform3D(4, 0.000933622, 0.000219935, -0.00052811, 1.37786, 3.755
 [node name="BeholdAMan" parent="." instance=ExtResource("1_44y18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11421, 0.0293438, 5.00043)
 
-[node name="shiny_cube5" parent="." instance=ExtResource("2_6aaa6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837684, 2.94135, -4.47512)
+[node name="shiny_cube2" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.507644, -0.0212143, -1.46955)
+
+[node name="shiny_cube6" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502942, 1.00147, -2.46587)
+
+[node name="shiny_cube7" parent="." instance=ExtResource("2_6aaa6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492834, 1.94328, -3.49934)

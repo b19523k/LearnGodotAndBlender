@@ -17,6 +17,9 @@ var currentPlayerTarget = null
 var baseMoveSpeed = 3
 var moveAttackSpeed = 0.2
 
+var actionsTaken = 0
+var actionsUntilGeneralCooldown = 8
+
 var swipeCoolDown = 4
 var smashCoolDown = 6
 var shoveCoolDown = 2
@@ -63,11 +66,13 @@ func _physics_process(delta):
 	if (currentPlayerTarget != null):
 		var targetPos = currentPlayerTarget.transform.origin
 		var moveDir = (targetPos - position).normalized()
-		
+
 		look_at(targetPos, Vector3.UP)
 
 		var dist = position.distance_to(targetPos)
-		
+
+		if (!animating && actionsTaken >= actionsUntilGeneralCooldown):
+			availableActions.push_front('general_cooldown')
 		if (timeSinceSwipe > swipeCoolDown && availableActions.count("swipe") < 3):
 			availableActions.push_back("swipe")
 			timeSinceSwipe = 0
@@ -80,65 +85,72 @@ func _physics_process(delta):
 
 		#print(availableActions)
 		
-		if (dist < 1.6):
-			timeSinceClose = 0
-		
-			if (!animating && availableActions.size() > 0):
-				var nextAction = availableActions.pick_random()
-				if (nextAction == 'shove'):
-					nextAction = availableActions.pick_random()
-				availableActions.erase(nextAction)
-				animating = true
-				
-				if (nextAction == "swipe"):
-					anim_tree["parameters/conditions/swipe"] = true
-				elif (nextAction == "smash"):
-					var smashAngle = 0
-					if (dist < 0.9):
-						smashAngle = .55
-					anim_tree["parameters/smash_blend/blend_position"] = smashAngle
-					anim_tree["parameters/conditions/smash"] = true
-					velocity = moveDir * moveAttackSpeed
-				elif (nextAction == "shove"):
-					anim_tree["parameters/conditions/shove"] = true
-					
-			else:
-				velocity = moveDir * moveAttackSpeed
-				
-		elif (dist > 6 || timeSinceClose > 5):
-			if (timeSinceThrow > throwCoolDown):
+		if (availableActions.size() > 0):
+			if (!animating && availableActions[0] == "general_cooldown"):
+				anim_tree["parameters/conditions/idle"] = true
+				anim_tree["parameters/conditions/general_cooldown"] = true
+				availableActions.erase("general_cooldown")
+				velocity = Vector3.ZERO
+
+			if (dist < 1.6):
+				timeSinceClose = 0
+			
 				if (!animating):
-					timeSinceClose = 0
-					anim_tree["parameters/conditions/throw"] = true
-					anim_tree["parameters/conditions/idle"] = false
-					anim_tree["parameters/conditions/walk"] = false
+					var nextAction = availableActions.pick_random()
+					if (nextAction == 'shove'):
+						nextAction = availableActions.pick_random()
+					availableActions.erase(nextAction)
 					animating = true
-					velocity = Vector3.ZERO
+					
+					if (nextAction == "swipe"):
+						anim_tree["parameters/conditions/swipe"] = true
+					elif (nextAction == "smash"):
+						var smashAngle = 0
+						if (dist < 0.9):
+							smashAngle = .55
+						anim_tree["parameters/smash_blend/blend_position"] = smashAngle
+						anim_tree["parameters/conditions/smash"] = true
+						velocity = moveDir * moveAttackSpeed
+					elif (nextAction == "shove"):
+						anim_tree["parameters/conditions/shove"] = true
+						
 				else:
-					velocity = Vector3.ZERO
+					velocity = moveDir * moveAttackSpeed
+					
+			elif (dist > 6 || timeSinceClose > 5):
+				if (timeSinceThrow > throwCoolDown):
+					if (!animating):
+						timeSinceClose = 0
+						anim_tree["parameters/conditions/throw"] = true
+						anim_tree["parameters/conditions/idle"] = false
+						anim_tree["parameters/conditions/walk"] = false
+						animating = true
+						velocity = Vector3.ZERO
+					else:
+						velocity = Vector3.ZERO
+				else:
+					velocity = moveDir * baseMoveSpeed
+					anim_tree["parameters/conditions/idle"] = false
+					anim_tree["parameters/conditions/walk"] = true
+			elif (animating):
+				velocity = Vector3.ZERO
 			else:
-				velocity = moveDir * baseMoveSpeed
 				anim_tree["parameters/conditions/idle"] = false
 				anim_tree["parameters/conditions/walk"] = true
-		elif (animating):
-			velocity = Vector3.ZERO
+				velocity = moveDir * baseMoveSpeed
 		else:
-			anim_tree["parameters/conditions/idle"] = false
-			anim_tree["parameters/conditions/walk"] = true
-			velocity = moveDir * baseMoveSpeed
-	else:
-		velocity = Vector3.ZERO
-		anim_tree["parameters/conditions/idle"] = true
-		anim_tree["parameters/conditions/walk"] = false
-		
-		#anim_tree["parameters/conditions/idle"] = false
-		#anim_tree["parameters/conditions/death"] = true
-		#anim_tree["parameters/conditions/death"] = false
-		#anim_tree["parameters/conditions/attack"] = true
-		#anim_tree["parameters/conditions/attack"] = false
-		#
-		#anim_tree["parameters/conditions/walk"] = false
-		#anim_tree["parameters/conditions/idle"] = true
+			velocity = Vector3.ZERO
+			anim_tree["parameters/conditions/idle"] = true
+			anim_tree["parameters/conditions/walk"] = false
+			
+			#anim_tree["parameters/conditions/idle"] = false
+			#anim_tree["parameters/conditions/death"] = true
+			#anim_tree["parameters/conditions/death"] = false
+			#anim_tree["parameters/conditions/attack"] = true
+			#anim_tree["parameters/conditions/attack"] = false
+			#
+			#anim_tree["parameters/conditions/walk"] = false
+			#anim_tree["parameters/conditions/idle"] = true
 		
 	move_and_slide()
 	
@@ -160,21 +172,29 @@ func _on_rigid_body_3d_body_exited(body):
 
 
 func _on_animation_tree_animation_finished(anim_name):
-	if (anim_name == "swipe"):
+	if (anim_name == "general_cooldown"):
+		anim_tree["parameters/conditions/general_cooldown"] = false
+		actionsTaken = 0
+		animating = false
+	elif (anim_name == "swipe"):
 		anim_tree["parameters/conditions/swipe"] = false
 		timeSinceSwipe = 0
+		actionsTaken += 1
 		animating = false
 	elif(anim_name == "smash" || anim_name == "smash_down" || anim_name == "smash_up"): # Could also check if smash blend space completed?
 		anim_tree["parameters/smash_blend/blend_position"] = 0
 		anim_tree["parameters/conditions/smash"] = false
+		actionsTaken += 3
 		timeSinceSmash = 0
 		animating = false
 	elif(anim_name == "shove"):
 		anim_tree["parameters/conditions/shove"] = false
 		timeSinceShove = 0
+		actionsTaken += 2
 		animating = false
 	elif(anim_name == "throw"):
 		anim_tree["parameters/conditions/throw"] = false
 		timeSinceThrow = 0
+		actionsTaken += 1
 		animating = false
 

@@ -1966,28 +1966,28 @@ transform = Transform3D(0.999997, -0.00259653, 0.000313544, 0.00259589, 0.999995
 [node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
 
 [node name="Skeleton3D" parent="behold_a_man/Armature" index="0"]
-bones/0/position = Vector3(-9.32774e-12, 0.980529, 0.000234816)
+bones/0/position = Vector3(-5.10859e-11, 0.979835, 0.000267396)
 bones/1/rotation = Quaternion(0.0301978, -3.5231e-14, 7.19972e-09, 0.999544)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.119703, 2.51547e-14, 2.85394e-08, 0.99281)
-bones/3/rotation = Quaternion(-0.00454751, -0.0034365, 0.975829, -0.218461)
+bones/3/rotation = Quaternion(-0.00445639, -0.00344, 0.976799, -0.214086)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(0.123774, -0.0129088, -0.0903539, 0.988104)
-bones/5/rotation = Quaternion(0.00473462, -0.00342929, 0.97377, 0.227459)
+bones/5/rotation = Quaternion(0.00465996, -0.00343229, 0.974601, 0.223874)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.123774, 0.0129088, 0.0903539, 0.988104)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0490683, 0.00710717, 0.99733, -0.0536251)
+bones/7/rotation = Quaternion(0.0491213, 0.00594346, 0.997343, -0.0534766)
 bones/7/scale = Vector3(1.00006, 1, 1.00001)
-bones/8/rotation = Quaternion(-0.147383, 0.000272916, -0.00915739, 0.989037)
+bones/8/rotation = Quaternion(-0.142474, 0.00027312, -0.0088524, 0.989759)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.615212, 0.0222183, -0.0750806, 0.784464)
+bones/9/rotation = Quaternion(0.613252, 0.021931, -0.0752152, 0.785992)
 bones/9/scale = Vector3(1.00001, 1.00002, 0.999998)
-bones/10/rotation = Quaternion(-0.0407749, 0.00679569, 0.997766, 0.0524778)
+bones/10/rotation = Quaternion(-0.0408267, 0.00563099, 0.997779, 0.0523393)
 bones/10/scale = Vector3(1.00006, 1, 1.00001)
-bones/11/rotation = Quaternion(-0.147383, -0.000272888, 0.00915731, 0.989037)
+bones/11/rotation = Quaternion(-0.142474, -0.000273086, 0.00885233, 0.989759)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.615901, -0.0149514, 0.0709446, 0.78448)
+bones/12/rotation = Quaternion(0.61394, -0.0146744, 0.0710616, 0.786011)
 bones/12/scale = Vector3(1.00001, 1.00002, 0.999998)
 bones/13/position = Vector3(0.198773, 0.540738, 0.624293)
 bones/13/rotation = Quaternion(-0.0313898, 0.70641, 0.70641, -0.0313898)
@@ -2003,7 +2003,7 @@ override_tip_basis = false
 target_node = NodePath("../../../../upperbody_ik_target")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.962088, -0.26311, 0.0718328, 0.272739, -0.928118, 0.253397, -1.97487e-06, 0.263382, 0.964692, -0.278967, 1.24649, -0.0374554)
+transform = Transform3D(-0.96407, -0.25627, 0.0699654, 0.265649, -0.93003, 0.253919, -2.05659e-06, 0.263382, 0.964692, -0.277367, 1.24501, -0.0374228)
 bone_name = "lowerarm.r"
 bone_idx = 6
 

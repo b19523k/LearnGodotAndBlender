@@ -17,7 +17,7 @@ const LERP_VAL = .15
 const RUN_SPEED = 5.0
 const ROLL_SPEED = 10.0
 const PUNCH_SPEED = 1.0
-const JUMP_VELOCITY = 10
+const JUMP_VELOCITY = 6
 
 var is_rolling = false
 var roll_started = false
@@ -72,7 +72,7 @@ func _physics_process(delta):
 	timeOffFloor += delta
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta * (2 + timeOffFloor)
+		velocity.y -= gravity * delta * (1 + timeOffFloor)
 	else:
 		timeOffFloor = 0
 		
