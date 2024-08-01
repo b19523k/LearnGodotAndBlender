@@ -19,6 +19,8 @@ const ROLL_SPEED = 10.0
 const PUNCH_SPEED = 1.0
 const JUMP_VELOCITY = 6
 
+var attackHit = false
+
 var is_rolling = false
 var roll_started = false
 var is_jumping = false
@@ -153,6 +155,7 @@ func _on_animation_tree_animation_finished(anim_name): # this needs to be linked
 	elif (anim_name == "punch"):
 		is_punching = false
 		punch_started = false
+		attackHit = false
 
 func _on_animation_tree_animation_started(anim_name:StringName):
 	# print("animation started: ", anim_name)
@@ -164,4 +167,7 @@ func _on_animation_tree_animation_started(anim_name:StringName):
 		roll_started = true
 
 func _on_punch_rigid_body_3d_hitbox_entered(collidedWith:Node):
-	print("fist hit shambler")
+	if (!attackHit && punch_started):
+		var collsionOwner = collidedWith.owner
+		collsionOwner.takeDamage(3)
+		attackHit = true

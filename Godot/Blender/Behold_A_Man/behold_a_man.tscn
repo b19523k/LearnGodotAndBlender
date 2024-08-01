@@ -1931,7 +1931,7 @@ transitions = ["roll", "jump", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(89, 24.6347)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpr0q"]
-size = Vector3(0.12915, 0.290298, 0.245544)
+size = Vector3(0.147095, 0.221443, 0.245544)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6a4k"]
 radius = 0.324363
@@ -1966,28 +1966,28 @@ transform = Transform3D(0.999997, -0.00259653, 0.000313544, 0.00259589, 0.999995
 [node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
 
 [node name="Skeleton3D" parent="behold_a_man/Armature" index="0"]
-bones/0/position = Vector3(-5.10859e-11, 0.979835, 0.000267396)
+bones/0/position = Vector3(1.24644e-11, 0.985431, 4.64982e-06)
 bones/1/rotation = Quaternion(0.0301978, -3.5231e-14, 7.19972e-09, 0.999544)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.119703, 2.51547e-14, 2.85394e-08, 0.99281)
-bones/3/rotation = Quaternion(-0.00445639, -0.00344, 0.976799, -0.214086)
+bones/3/rotation = Quaternion(-0.00367044, -0.00346638, 0.984317, -0.176336)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(0.123774, -0.0129088, -0.0903539, 0.988104)
-bones/5/rotation = Quaternion(0.00465996, -0.00343229, 0.974601, 0.223874)
+bones/5/rotation = Quaternion(0.00400895, -0.00345566, 0.981262, 0.192605)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.123774, 0.0129088, 0.0903539, 0.988104)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0491213, 0.00594346, 0.997343, -0.0534766)
+bones/7/rotation = Quaternion(0.0503232, -0.0201198, 0.997267, -0.0502217)
 bones/7/scale = Vector3(1.00006, 1, 1.00001)
-bones/8/rotation = Quaternion(-0.142474, 0.00027312, -0.0088524, 0.989759)
+bones/8/rotation = Quaternion(-0.089839, 0.00027482, -0.00558196, 0.995941)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.613252, 0.021931, -0.0752152, 0.785992)
+bones/9/rotation = Quaternion(0.591908, 0.0188485, -0.0767269, 0.802124)
 bones/9/scale = Vector3(1.00001, 1.00002, 0.999998)
-bones/10/rotation = Quaternion(-0.0408267, 0.00563099, 0.997779, 0.0523393)
+bones/10/rotation = Quaternion(-0.042004, -0.020455, 0.99769, 0.0493065)
 bones/10/scale = Vector3(1.00006, 1, 1.00001)
-bones/11/rotation = Quaternion(-0.142474, -0.000273086, 0.00885233, 0.989759)
+bones/11/rotation = Quaternion(-0.0898383, -0.000274795, 0.00558189, 0.995941)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.61394, -0.0146744, 0.0710616, 0.786011)
+bones/12/rotation = Quaternion(0.59258, -0.0117048, 0.0723845, 0.802168)
 bones/12/scale = Vector3(1.00001, 1.00002, 0.999998)
 bones/13/position = Vector3(0.198773, 0.540738, 0.624293)
 bones/13/rotation = Quaternion(-0.0313898, 0.70641, 0.70641, -0.0313898)
@@ -2003,7 +2003,7 @@ override_tip_basis = false
 target_node = NodePath("../../../../upperbody_ik_target")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.96407, -0.25627, 0.0699654, 0.265649, -0.93003, 0.253919, -2.05659e-06, 0.263382, 0.964692, -0.277367, 1.24501, -0.0374228)
+transform = Transform3D(-0.979077, -0.196305, 0.0535937, 0.20349, -0.944507, 0.257872, -2.00211e-06, 0.263383, 0.964691, -0.26323, 1.2443, -0.0376855)
 bone_name = "lowerarm.r"
 bone_idx = 6
 
@@ -2015,7 +2015,7 @@ max_contacts_reported = 3
 contact_monitor = true
 
 [node name="Punch_CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/BoneAttachment3D/Punch_RigidBody3D"]
-transform = Transform3D(-0.966763, -0.246647, 0.0673337, 0.255672, -0.932626, 0.254634, -7.41333e-06, 0.263386, 0.964691, -0.372747, 0.842885, 0.0757924)
+transform = Transform3D(-0.968845, -0.238921, 0.0652242, 0.247663, -0.934635, 0.255182, -7.42022e-06, 0.263385, 0.964691, -0.310587, 0.862846, 0.0727471)
 shape = SubResource("BoxShape3D_wpr0q")
 
 [node name="AnimationPlayer" parent="behold_a_man" index="1"]

@@ -5,6 +5,8 @@ extends CharacterBody3D
 
 var rng = RandomNumberGenerator.new()
 
+var health = 15
+
 var anim_player_rel_path = "../shambler/AnimationPlayer"
 var time_between_anims = 3
 var deltaTime = 0
@@ -45,7 +47,8 @@ func auto_blender_import():
 func _ready():
 	auto_blender_import()
 	anim_tree.active = true
-	
+
+	anim_tree["parameters/conditions/is_dead"] = health <= 0
 
 
 func _physics_process(delta):
@@ -67,7 +70,8 @@ func _physics_process(delta):
 		var targetPos = currentPlayerTarget.transform.origin
 		var moveDir = (targetPos - position).normalized()
 
-		look_at(targetPos, Vector3.UP)
+		if(anim_tree["parameters/conditions/general_cooldown"] == false && health > 0):
+			look_at(targetPos, Vector3.UP)
 
 		var dist = position.distance_to(targetPos)
 
@@ -197,4 +201,12 @@ func _on_animation_tree_animation_finished(anim_name):
 		timeSinceThrow = 0
 		actionsTaken += 1
 		animating = false
+
+func takeDamage(amount:int):
+	health -= amount
+	if (health <= 0):
+		anim_tree["parameters/conditions/is_dead"] = true
+		print("shambler took: ", amount, " damage, and has died")
+	else:
+		print("shambler took: ", amount, " damage, and has: ", health, " remaining")
 
