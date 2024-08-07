@@ -114,3 +114,11 @@ https://stackoverflow.com/a/68959644
 ### Why use it
 
 Can be used to make a pretty accurate hitbox by having a collider shape for each bone of a model. Add a BoneAttachment3D, either directly to a skeleton or set the external skeleton property. Add a RigidBody3D as a child of the BoneAttachment3D. Turn on 'Contact Monitor' on the RigidBody3D and set 'Max Contacts Reported' to at least 3 under Solver of the RigidBody3D. Add one or more CollisionShape3Ds as children of the RigidBody3D.
+
+## Add Health Bar To 3D Character
+
+![Image](tutorials_used/addProgressBarAboveEnemyHead1.png)
+
+![Image](tutorials_used/addProgressBarAboveEnemyHead2.png)
+
+Finally, on the Sprite3D, under flags, enable billboard mode. Progress bar color can be set by creating a StyleBoxFlat for the Fill options under Styles on the ProgressBar node.

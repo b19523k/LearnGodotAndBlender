@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var skeleton = $shambler/Armature/Skeleton3D
 @onready var anim_tree = $AnimationTree
+@onready var healthbar = $Sprite3D/SubViewport/ProgressBar
 
 var rng = RandomNumberGenerator.new()
 
@@ -49,6 +50,8 @@ func _ready():
 	anim_tree.active = true
 
 	anim_tree["parameters/conditions/is_dead"] = health <= 0
+	healthbar.visible = true
+	healthbar.value = health
 
 
 func _physics_process(delta):
@@ -207,6 +210,8 @@ func takeDamage(amount:int):
 	if (health <= 0):
 		anim_tree["parameters/conditions/is_dead"] = true
 		print("shambler took: ", amount, " damage, and has died")
+		healthbar.visible = false
 	else:
 		print("shambler took: ", amount, " damage, and has: ", health, " remaining")
+	healthbar.value = health
 
