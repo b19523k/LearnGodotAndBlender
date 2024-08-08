@@ -21,7 +21,9 @@ var baseMoveSpeed = 3
 var moveAttackSpeed = 0.2
 
 var actionsTaken = 0
-var actionsUntilGeneralCooldown = 8
+var actionsUntilGeneralCooldown = 6
+
+var attackHit = true
 
 var swipeCoolDown = 4
 var smashCoolDown = 6
@@ -111,15 +113,18 @@ func _physics_process(delta):
 					
 					if (nextAction == "swipe"):
 						anim_tree["parameters/conditions/swipe"] = true
+						attackHit = false
 					elif (nextAction == "smash"):
 						var smashAngle = 0
 						if (dist < 0.9):
 							smashAngle = .55
 						anim_tree["parameters/smash_blend/blend_position"] = smashAngle
 						anim_tree["parameters/conditions/smash"] = true
+						attackHit = false
 						velocity = moveDir * moveAttackSpeed
 					elif (nextAction == "shove"):
 						anim_tree["parameters/conditions/shove"] = true
+						attackHit = false
 						
 				else:
 					velocity = moveDir * moveAttackSpeed
@@ -131,6 +136,7 @@ func _physics_process(delta):
 						anim_tree["parameters/conditions/throw"] = true
 						anim_tree["parameters/conditions/idle"] = false
 						anim_tree["parameters/conditions/walk"] = false
+						attackHit = false
 						animating = true
 						velocity = Vector3.ZERO
 					else:
@@ -215,3 +221,18 @@ func takeDamage(amount:int):
 		print("shambler took: ", amount, " damage, and has: ", health, " remaining")
 	healthbar.value = health
 
+func armsHitPlayer(collidedWith:Node):
+	print("shambler collider with player")
+	if (attackHit == false):
+		var damageDealt = 0
+		if (anim_tree["parameters/conditions/swipe"]):
+			damageDealt = 6
+		elif (anim_tree["parameters/conditions/smash"]):
+			damageDealt = 14
+		elif (anim_tree["parameters/conditions/shove"]):
+			damageDealt = 2
+		var collisionOwner = collidedWith.owner
+		collisionOwner.takeDamage(damageDealt)
+		attackHit = true
+		print("shambler hit player")
+	print("")

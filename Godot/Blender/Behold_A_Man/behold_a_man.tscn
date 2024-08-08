@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://byon65lwt1g1a"]
+[gd_scene load_steps=50 format=3 uid="uid://byon65lwt1g1a"]
 
 [ext_resource type="Script" path="res://Blender/Behold_A_Man/behold_a_man.gd" id="1_vqj8l"]
 [ext_resource type="PackedScene" uid="uid://jndxyo6m311g" path="res://Blender/Behold_A_Man/behold_a_man.blend" id="2_46lti"]
@@ -1971,6 +1971,12 @@ size = Vector3(0.119072, 0.541016, 0.126076)
 radius = 0.324363
 height = 1.77821
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p64vo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bo8e4"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="BeholdAMan" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 7
@@ -2041,7 +2047,7 @@ override_tip_basis = false
 target_node = NodePath("../../../../upperbody_ik_target")
 
 [node name="FistCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.976267, -0.208926, 0.0570395, 0.216572, -0.941796, 0.257132, -1.99629e-06, 0.263383, 0.964691, -0.26622, 1.24436, -0.0376299)
+transform = Transform3D(-0.976267, -0.208926, 0.0570396, 0.216573, -0.941796, 0.257132, -1.92947e-06, 0.263382, 0.964692, -0.26622, 1.24436, -0.0376299)
 bone_name = "lowerarm.r"
 bone_idx = 6
 
@@ -2057,7 +2063,7 @@ transform = Transform3D(-0.968845, -0.238921, 0.0652242, 0.247663, -0.934635, 0.
 shape = SubResource("BoxShape3D_wpr0q")
 
 [node name="HeadCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.77636e-14, 2.38419e-07, 5.10154e-08, 0.976839, -0.213974, -2.32897e-07, 0.213974, 0.976839, 4.86574e-11, 1.53755, -0.0208787)
+transform = Transform3D(1, 4.26326e-14, 2.38419e-07, 5.10154e-08, 0.976839, -0.213974, -2.32897e-07, 0.213974, 0.976839, 4.86556e-11, 1.53755, -0.0208787)
 bone_name = "head"
 bone_idx = 2
 
@@ -2070,7 +2076,7 @@ transform = Transform3D(1, 0, -1.98952e-13, 0, 1, 0, 0, 0, 1, 2.83506e-09, 0.168
 shape = SubResource("CylinderShape3D_jk63c")
 
 [node name="UpperBodyCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, 2.66454e-15, 2.38419e-07, -5.80247e-09, 0.999704, 0.0243373, -2.38348e-07, -0.0243373, 0.999704, 4.86571e-11, 1.10749, -0.0104092)
+transform = Transform3D(1, -1.77636e-15, 2.38419e-07, -5.80248e-09, 0.999704, 0.0243374, -2.38348e-07, -0.0243374, 0.999704, 4.86571e-11, 1.10749, -0.0104092)
 bone_name = "body_upper"
 bone_idx = 1
 
@@ -2096,7 +2102,7 @@ transform = Transform3D(1, -3.19366e-08, 2.14827e-09, 3.19365e-08, 0.99099, -0.1
 shape = SubResource("BoxShape3D_64jcs")
 
 [node name="LeftUpperArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="6"]
-transform = Transform3D(-0.932069, 0.362227, -0.00626355, -0.362281, -0.93193, 0.0161212, 2.35531e-06, 0.0172953, 0.99985, 0.1717, 1.46724, -0.0418175)
+transform = Transform3D(-0.932069, 0.362226, -0.00626355, -0.36228, -0.93193, 0.0161213, 2.35718e-06, 0.0172953, 0.99985, 0.1717, 1.46724, -0.0418176)
 bone_name = "upperarm.l"
 bone_idx = 3
 
@@ -2109,7 +2115,7 @@ transform = Transform3D(0.949616, 0.313407, 0.00234032, -0.313388, 0.949406, 0.0
 shape = SubResource("BoxShape3D_rpqsr")
 
 [node name="LeftLowerArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="7"]
-transform = Transform3D(-0.982396, 0.180217, -0.0492013, -0.186813, -0.947709, 0.258746, 1.98209e-06, 0.263383, 0.964692, 0.259406, 1.24159, -0.0376299)
+transform = Transform3D(-0.982396, 0.180216, -0.0492012, -0.186812, -0.947709, 0.258746, 1.91247e-06, 0.263382, 0.964692, 0.259405, 1.24159, -0.0376299)
 bone_name = "lowerarm.l"
 bone_idx = 4
 
@@ -2122,7 +2128,7 @@ transform = Transform3D(0.998717, 0.0457018, -0.0218245, -0.0466542, 0.997882, -
 shape = SubResource("BoxShape3D_64xk0")
 
 [node name="LeftUpperLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="8"]
-transform = Transform3D(-0.989846, 0.100434, 0.101155, -0.0944529, -0.993576, 0.0623425, 0.106771, 0.0521513, 0.99293, 0.0893398, 0.994018, -0.0180867)
+transform = Transform3D(-0.989848, 0.100434, 0.101155, -0.0944532, -0.993576, 0.0623423, 0.106771, 0.0521513, 0.992926, 0.0893398, 0.994017, -0.0180867)
 bone_name = "upperleg.l"
 bone_idx = 7
 
@@ -2131,11 +2137,11 @@ collision_layer = 8
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LeftUpperLegCollider/RigidBody3D"]
-transform = Transform3D(0.992908, 0.118877, 0.00258649, -0.11844, 0.986873, 0.109711, 0.0104843, -0.109239, 0.99395, 0.0046661, 0.246595, -0.00578459)
+transform = Transform3D(0.992906, 0.118875, 0.00259161, -0.11844, 0.986882, 0.109711, 0.0104843, -0.10924, 0.99396, 0.0046661, 0.246595, -0.00578459)
 shape = SubResource("BoxShape3D_lhv8s")
 
 [node name="LeftLowerLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="9"]
-transform = Transform3D(-0.990971, 0.0650249, 0.117741, -0.0816925, -0.986387, -0.142722, 0.106862, -0.151046, 0.982749, 0.13521, 0.540228, 0.00573198)
+transform = Transform3D(-0.990973, 0.0650251, 0.11774, -0.0816927, -0.986386, -0.142721, 0.106862, -0.151044, 0.982745, 0.13521, 0.540228, 0.00573199)
 bone_name = "lowerleg.l"
 bone_idx = 8
 
@@ -2148,7 +2154,7 @@ transform = Transform3D(0.997727, 0.066499, 0.0109086, -0.06567, 0.995785, -0.06
 shape = SubResource("BoxShape3D_ecihn")
 
 [node name="RightUpperArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="10"]
-transform = Transform3D(-0.920632, -0.390372, 0.00675042, 0.39043, -0.920494, 0.0159235, -2.35066e-06, 0.0172952, 0.99985, -0.1717, 1.46724, -0.0418175)
+transform = Transform3D(-0.920632, -0.390373, 0.00675043, 0.390431, -0.920494, 0.0159235, -2.36928e-06, 0.0172953, 0.99985, -0.1717, 1.46724, -0.0418176)
 bone_name = "upperarm.r"
 bone_idx = 5
 
@@ -2161,7 +2167,7 @@ transform = Transform3D(0.949321, -0.314267, -0.00515247, 0.314308, 0.949235, 0.
 shape = SubResource("BoxShape3D_kgj34")
 
 [node name="RightLowerArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="11"]
-transform = Transform3D(-0.920632, -0.390372, 0.00675042, 0.39043, -0.920494, 0.0159235, -2.35066e-06, 0.0172952, 0.99985, -0.1717, 1.46724, -0.0418175)
+transform = Transform3D(-0.920632, -0.390373, 0.00675043, 0.390431, -0.920494, 0.0159235, -2.36928e-06, 0.0172953, 0.99985, -0.1717, 1.46724, -0.0418176)
 bone_name = "upperarm.r"
 bone_idx = 5
 
@@ -2174,7 +2180,7 @@ transform = Transform3D(0.957981, -0.229114, 0.172578, 0.263655, 0.9403, -0.2152
 shape = SubResource("BoxShape3D_uay40")
 
 [node name="RightUpperLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="12"]
-transform = Transform3D(-0.991567, -0.0987378, -0.0846137, 0.0937695, -0.993732, 0.0608774, -0.0900982, 0.0524261, 0.994567, -0.0893398, 0.994018, -0.0180867)
+transform = Transform3D(-0.991569, -0.0987378, -0.0846134, 0.0937697, -0.993731, 0.0608772, -0.0900984, 0.0524261, 0.994563, -0.0893398, 0.994017, -0.0180867)
 bone_name = "upperleg.r"
 bone_idx = 10
 
@@ -2187,7 +2193,7 @@ transform = Transform3D(0.9891, -0.146889, -0.0102905, 0.146537, 0.975019, 0.166
 shape = SubResource("BoxShape3D_f1wew")
 
 [node name="RightLowerLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="13"]
-transform = Transform3D(-0.992683, -0.0667322, -0.1012, 0.0810084, -0.98623, -0.144185, -0.0901884, -0.151323, 0.984377, -0.134436, 0.540157, 0.00585747)
+transform = Transform3D(-0.992685, -0.0667322, -0.101199, 0.0810086, -0.98623, -0.144186, -0.0901886, -0.151322, 0.984372, -0.134436, 0.540157, 0.00585748)
 bone_name = "lowerleg.r"
 bone_idx = 11
 
@@ -2210,6 +2216,14 @@ script = ExtResource("3_kkbxs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.921, 0)
 shape = SubResource("CapsuleShape3D_m6a4k")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_right = 264.0
+offset_bottom = 27.0
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_p64vo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bo8e4")
+value = 52.35
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]

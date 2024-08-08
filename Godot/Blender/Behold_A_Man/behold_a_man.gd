@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var anim_tree = $AnimationTree
 @onready var upperbody_ik = $behold_a_man/Armature/Skeleton3D/spine_ik
 @onready var upperbody_ik_target = $upperbody_ik_target
+@onready var healthBar = $HealthBar
 
 var anim_player_rel_path = "../behold_a_man/AnimationPlayer"
 
@@ -19,6 +20,8 @@ const ROLL_SPEED = 10.0
 const PUNCH_SPEED = 1.0
 const JUMP_VELOCITY = 6
 
+var maxHealth = 100
+var health = 40
 var attackHit = false
 
 var is_rolling = false
@@ -51,6 +54,10 @@ func _ready():
 	# Other ready settings
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	anim_tree.active = true
+
+	healthBar.max_value = maxHealth
+	healthBar.value = maxHealth
+	health = maxHealth
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
@@ -171,3 +178,8 @@ func _on_punch_rigid_body_3d_hitbox_entered(collidedWith:Node):
 		var collsionOwner = collidedWith.owner
 		collsionOwner.takeDamage(3)
 		attackHit = true
+
+func takeDamage(amount:int):
+	health -= amount
+	healthBar.value = health
+	print("Player took: ", amount, " damage, and has: ", health, " health remaining")
