@@ -1,10 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://byon65lwt1g1a"]
+[gd_scene load_steps=48 format=3 uid="uid://byon65lwt1g1a"]
 
 [ext_resource type="Script" path="res://Blender/Behold_A_Man/behold_a_man.gd" id="1_vqj8l"]
 [ext_resource type="PackedScene" uid="uid://jndxyo6m311g" path="res://Blender/Behold_A_Man/behold_a_man.blend" id="2_46lti"]
 [ext_resource type="Script" path="res://Blender/Behold_A_Man/upperbody_ik_target.gd" id="3_kkbxs"]
 
-[sub_resource type="Animation" id="Animation_wmhsm"]
+[sub_resource type="Animation" id="Animation_d88u3"]
 resource_name = "default"
 length = 0.0416667
 tracks/0/type = "rotation_3d"
@@ -204,7 +204,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, -0.0891833, -0.000274809, 0.00554119, 0.996)
 
-[sub_resource type="Animation" id="Animation_d7xd2"]
+[sub_resource type="Animation" id="Animation_rr4uo"]
 resource_name = "jump"
 length = 1.20833
 tracks/0/type = "position_3d"
@@ -404,7 +404,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, 0.0301978, -3.52379e-14, 7.19972e-09, 0.999544)
 
-[sub_resource type="Animation" id="Animation_qfelx"]
+[sub_resource type="Animation" id="Animation_f6kfq"]
 resource_name = "punch"
 length = 0.833333
 tracks/0/type = "position_3d"
@@ -604,7 +604,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, -0.0274763, -0.706573, 0.706573, 0.0274763)
 
-[sub_resource type="Animation" id="Animation_i0eb8"]
+[sub_resource type="Animation" id="Animation_4pk6s"]
 resource_name = "roll"
 length = 1.08333
 tracks/0/type = "position_3d"
@@ -804,7 +804,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, -0.0274763, -0.706573, 0.706573, 0.0274763, 0.266667, 1, -0.0274763, -0.706573, 0.706573, 0.0274763, 0.3, 1, -0.0262355, -0.737102, 0.674664, 0.0286635, 0.333333, 1, -0.0207855, -0.844267, 0.534513, 0.0328308, 0.366667, 1, -0.00606995, -0.986978, 0.156093, 0.0383804, 0.4, 1, 0.00647255, -0.985285, -0.166446, 0.0383145, 0.433333, 1, 0.0141906, -0.930228, -0.36492, 0.0361736, 0.466667, 1, 0.0181904, -0.882992, -0.467777, 0.0343367, 0.5, 1, 0.0216451, -0.829859, -0.556619, 0.0322705, 0.533333, 1, 0.0274785, -0.706518, -0.706628, 0.0274742, 0.566667, 1, 0.0331258, -0.52234, -0.851851, 0.0203121, 0.6, 1, 0.0367605, -0.323818, -0.945321, 0.0125922, 0.633333, 1, 0.0383151, -0.166369, -0.985298, 0.00646956, 0.666667, 1, 0.0386998, -0.0899091, -0.995192, 0.00349628, 0.7, 1, 0.0387932, -0.0574416, -0.997592, 0.00223372, 0.733333, 1, 0.0388571, 0.0039045, -0.999237, -0.000151829, 0.766667, 1, -0.0385545, -0.124536, 0.991454, 0.00484278, 0.8, 1, -0.0370569, -0.300651, 0.952942, 0.0116914, 0.833333, 1, -0.0338158, -0.492232, 0.869596, 0.0191413, 0.866667, 1, -0.0304384, -0.62113, 0.782744, 0.0241537, 0.9, 1, -0.0281573, -0.688616, 0.724084, 0.0267781, 0.933333, 1, -0.027063, -0.717044, 0.695944, 0.0278835, 0.966667, 1, -0.026798, -0.723596, 0.689129, 0.0281383, 1.03333, 1, -0.026798, -0.723596, 0.689129, 0.0281383, 1.06667, 1, -0.0272069, -0.713433, 0.699645, 0.0277431, 1.08333, 1, -0.0274763, -0.706573, 0.706573, 0.0274763)
 
-[sub_resource type="Animation" id="Animation_hv8ue"]
+[sub_resource type="Animation" id="Animation_veucx"]
 resource_name = "block_loop"
 length = 2.08333
 loop_mode = 1
@@ -1005,7 +1005,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, -0.0274763, -0.706573, 0.706573, 0.0274763)
 
-[sub_resource type="Animation" id="Animation_aghpi"]
+[sub_resource type="Animation" id="Animation_8lx3k"]
 resource_name = "idle_loop"
 length = 1.625
 loop_mode = 1
@@ -1206,7 +1206,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, 0.123774, 0.0129088, 0.0903539, 0.988104)
 
-[sub_resource type="Animation" id="Animation_nxvd3"]
+[sub_resource type="Animation" id="Animation_ip77k"]
 resource_name = "run_loop"
 length = 0.958333
 loop_mode = 1
@@ -1407,7 +1407,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, -0.000102348, -0.999241, 0.00263184, 0.0388573, 0.0333333, 1, -0.000658752, -0.999244, 0.00589286, 0.0384278, 0.0666667, 1, -0.0017845, -0.998994, 0.0237752, 0.0379877, 0.1, 1, -0.00321095, -0.997088, 0.0659724, 0.038128, 0.133333, 1, -0.00267342, -0.986796, 0.157336, 0.0383657, 0.166667, 1, 0.00408708, -0.941805, 0.334139, 0.0365861, 0.2, 1, 0.0133253, -0.837407, 0.545226, 0.0360627, 0.233333, 1, 0.0162347, -0.72371, 0.688859, 0.0381339, 0.266667, 1, 0.0145597, -0.62987, 0.775536, 0.0399567, 0.3, 1, 0.00965523, -0.570763, 0.820075, 0.04017, 0.333333, 1, 0.00224892, -0.548541, 0.83522, 0.0387923, 0.366667, 1, -0.00666834, -0.548852, 0.835141, 0.0354441, 0.4, 1, -0.0151833, -0.551553, 0.833402, 0.0316092, 0.433333, 1, -0.0226026, -0.558242, 0.828902, 0.0278638, 0.466667, 1, -0.0282318, -0.570469, 0.82046, 0.0247814, 0.5, 1, -0.0313707, -0.589655, 0.80672, 0.0229298, 0.533333, 1, -0.030321, -0.647114, 0.761395, 0.0245114, 0.566667, 1, -0.0287757, -0.692903, 0.719978, 0.026248, 0.6, 1, -0.0277701, -0.709839, 0.70329, 0.0272332, 0.633333, 1, -0.0273851, -0.708912, 0.704226, 0.0275673, 0.666667, 1, -0.0266621, -0.726909, 0.685633, 0.0282672, 0.7, 1, -0.0245104, -0.775378, 0.630301, 0.0301519, 0.733333, 1, -0.0212509, -0.836569, 0.546483, 0.0325315, 0.766667, 1, -0.0170688, -0.897678, 0.438936, 0.0349078, 0.8, 1, -0.0123586, -0.947358, 0.317809, 0.0368397, 0.833333, 1, -0.00773692, -0.979237, 0.19896, 0.0380794, 0.866667, 1, -0.00434351, -0.992982, 0.111696, 0.0386139, 0.9, 1, -0.00196803, -0.997962, 0.0506092, 0.0388075, 0.933333, 1, -0.000612381, -0.999121, 0.0157478, 0.0388526, 0.958333, 1, -0.000102348, -0.999241, 0.00263184, 0.0388573)
 
-[sub_resource type="Animation" id="Animation_lrm0q"]
+[sub_resource type="Animation" id="Animation_bnlu3"]
 resource_name = "step_left_loop"
 length = 0.416667
 loop_mode = 1
@@ -1608,7 +1608,7 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, 0.123774, 0.0129088, 0.0903539, 0.988104)
 
-[sub_resource type="Animation" id="Animation_gho75"]
+[sub_resource type="Animation" id="Animation_2dna8"]
 resource_name = "step_right_loop"
 length = 0.416667
 loop_mode = 1
@@ -1809,17 +1809,17 @@ tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = PackedFloat32Array(0, 1, 0.119703, 2.52728e-14, 2.85394e-08, 0.99281)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y3bs"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uplj"]
 _data = {
-"block": SubResource("Animation_hv8ue"),
-"default": SubResource("Animation_wmhsm"),
-"idle": SubResource("Animation_aghpi"),
-"jump": SubResource("Animation_d7xd2"),
-"punch": SubResource("Animation_qfelx"),
-"roll": SubResource("Animation_i0eb8"),
-"run": SubResource("Animation_nxvd3"),
-"step_left": SubResource("Animation_lrm0q"),
-"step_right": SubResource("Animation_gho75")
+"block": SubResource("Animation_veucx"),
+"default": SubResource("Animation_d88u3"),
+"idle": SubResource("Animation_8lx3k"),
+"jump": SubResource("Animation_rr4uo"),
+"punch": SubResource("Animation_f6kfq"),
+"roll": SubResource("Animation_4pk6s"),
+"run": SubResource("Animation_ip77k"),
+"step_left": SubResource("Animation_bnlu3"),
+"step_right": SubResource("Animation_2dna8")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cevq2"]
@@ -1861,7 +1861,7 @@ animation = &"step_right"
 [sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_jvhhx"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a56g0"]
-graph_offset = Vector2(104.685, 510.06)
+graph_offset = Vector2(43, 633.455)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_bn488")
 nodes/Animation/position = Vector2(620, 940)
 nodes/blockBlend/node = SubResource("AnimationNodeBlend2_mqcl3")
@@ -1933,6 +1933,40 @@ graph_offset = Vector2(89, 24.6347)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpr0q"]
 size = Vector3(0.147095, 0.221443, 0.245544)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jk63c"]
+height = 0.304477
+radius = 0.099498
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_14unn"]
+size = Vector3(0.444427, 0.324448, 0.264893)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64jcs"]
+size = Vector3(0.368622, 0.303192, 0.237572)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rpqsr"]
+size = Vector3(0.0967407, 0.164265, 0.145943)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_64xk0"]
+size = Vector3(0.101517, 0.49707, 0.12381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhv8s"]
+size = Vector3(0.17009, 0.410889, 0.166046)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecihn"]
+size = Vector3(0.100594, 0.545151, 0.134716)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgj34"]
+size = Vector3(0.0914307, 0.181035, 0.143433)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uay40"]
+size = Vector3(0.0952759, 0.485352, 0.123291)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1wew"]
+size = Vector3(0.183624, 0.384033, 0.15448)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kxvw2"]
+size = Vector3(0.119072, 0.541016, 0.126076)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m6a4k"]
 radius = 0.324363
 height = 1.77821
@@ -1943,9 +1977,10 @@ collision_mask = 7
 script = ExtResource("1_vqj8l")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 root_node = NodePath("../behold_a_man")
 libraries = {
-"": SubResource("AnimationLibrary_5y3bs")
+"": SubResource("AnimationLibrary_4uplj")
 }
 tree_root = SubResource("AnimationNodeStateMachine_il6f2")
 advance_expression_base_node = NodePath("..")
@@ -1966,34 +2001,37 @@ transform = Transform3D(0.999997, -0.00259653, 0.000313544, 0.00259589, 0.999995
 [node name="behold_a_man" parent="." instance=ExtResource("2_46lti")]
 
 [node name="Skeleton3D" parent="behold_a_man/Armature" index="0"]
-bones/0/position = Vector3(-2.78277e-11, 0.980221, 0.00024925)
+bones/0/position = Vector3(4.8656e-11, 0.984246, 6.02777e-05)
 bones/1/rotation = Quaternion(0.0301978, -3.5231e-14, 7.19972e-09, 0.999544)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(0.119703, 2.51547e-14, 2.85394e-08, 0.99281)
-bones/3/rotation = Quaternion(-0.00458197, -0.00343526, 0.975457, -0.220117)
+bones/3/rotation = Quaternion(-0.00383537, -0.00346124, 0.982864, -0.184257)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(0.123774, -0.0129088, -0.0903539, 0.988104)
-bones/5/rotation = Quaternion(0.00476404, -0.00342818, 0.973439, 0.228872)
+bones/5/rotation = Quaternion(0.00414553, -0.00345102, 0.979951, 0.199165)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.123774, 0.0129088, 0.0903539, 0.988104)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0490286, 0.0079783, 0.997319, -0.0537364)
+bones/7/rotation = Quaternion(0.0500176, -0.0135511, 0.997352, -0.0510301)
 bones/7/scale = Vector3(1.00006, 1, 1.00001)
-bones/8/rotation = Quaternion(-0.148507, 0.000272876, -0.0092272, 0.988868)
+bones/8/rotation = Quaternion(-0.102992, 0.000274471, -0.00639923, 0.994662)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.615803, 0.0223051, -0.0750402, 0.784002)
+bones/9/rotation = Quaternion(0.59731, 0.0196213, -0.0763365, 0.798128)
 bones/9/scale = Vector3(1.00001, 1.00002, 0.999998)
-bones/10/rotation = Quaternion(-0.0407362, 0.00766756, 0.997756, 0.0525817)
+bones/10/rotation = Quaternion(-0.0417042, -0.0138805, 0.997779, 0.050059)
 bones/10/scale = Vector3(1.00006, 1, 1.00001)
-bones/11/rotation = Quaternion(-0.148506, -0.000272838, 0.00922712, 0.988868)
+bones/11/rotation = Quaternion(-0.102992, -0.000274438, 0.00639915, 0.994662)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.616493, -0.0150351, 0.0709095, 0.784017)
+bones/12/rotation = Quaternion(0.597986, -0.0124487, 0.0720415, 0.798166)
 bones/12/scale = Vector3(1.00001, 1.00002, 0.999998)
 bones/13/position = Vector3(0.198773, 0.540738, 0.624293)
 bones/13/rotation = Quaternion(-0.0313898, 0.70641, 0.70641, -0.0313898)
 bones/14/rotation = Quaternion(-0.0274763, 0.706573, -0.706573, 0.0274763)
 bones/15/position = Vector3(-0.187475, 0.540738, 0.624293)
 bones/16/rotation = Quaternion(0.0274763, 0.706573, -0.706573, -0.0274763)
+
+[node name="BodyMesh" parent="behold_a_man/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00220937, 0.00552332, 0)
 
 [node name="spine_ik" type="SkeletonIK3D" parent="behold_a_man/Armature/Skeleton3D" index="1"]
 process_priority = 1
@@ -2002,21 +2040,164 @@ tip_bone = &"body_upper"
 override_tip_basis = false
 target_node = NodePath("../../../../upperbody_ik_target")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.961292, -0.265803, 0.0725681, 0.275531, -0.92735, 0.253188, -1.97114e-06, 0.263382, 0.964692, -0.279597, 1.2465, -0.037441)
+[node name="FistCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.976267, -0.208926, 0.0570395, 0.216572, -0.941796, 0.257132, -1.99629e-06, 0.263383, 0.964691, -0.26622, 1.24436, -0.0376299)
 bone_name = "lowerarm.r"
 bone_idx = 6
 
-[node name="Punch_RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/BoneAttachment3D"]
+[node name="Punch_RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/FistCollider"]
 transform = Transform3D(-0.979034, 0.203696, -1.98813e-06, -0.196504, -0.944466, 0.263383, 0.053648, 0.257861, 0.964692, -0.511216, 1.13339, -0.270378)
 collision_layer = 8
 collision_mask = 16
 max_contacts_reported = 3
 contact_monitor = true
 
-[node name="Punch_CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/BoneAttachment3D/Punch_RigidBody3D"]
+[node name="Punch_CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/FistCollider/Punch_RigidBody3D"]
 transform = Transform3D(-0.968845, -0.238921, 0.0652242, 0.247663, -0.934635, 0.255182, -7.42022e-06, 0.263385, 0.964691, -0.310587, 0.862846, 0.0727471)
 shape = SubResource("BoxShape3D_wpr0q")
+
+[node name="HeadCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 1.77636e-14, 2.38419e-07, 5.10154e-08, 0.976839, -0.213974, -2.32897e-07, 0.213974, 0.976839, 4.86574e-11, 1.53755, -0.0208787)
+bone_name = "head"
+bone_idx = 2
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/HeadCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/HeadCollider/RigidBody3D"]
+transform = Transform3D(1, 0, -1.98952e-13, 0, 1, 0, 0, 0, 1, 2.83506e-09, 0.168736, 0.00564545)
+shape = SubResource("CylinderShape3D_jk63c")
+
+[node name="UpperBodyCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 2.66454e-15, 2.38419e-07, -5.80247e-09, 0.999704, 0.0243373, -2.38348e-07, -0.0243373, 0.999704, 4.86571e-11, 1.10749, -0.0104092)
+bone_name = "body_upper"
+bone_idx = 1
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/UpperBodyCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/UpperBodyCollider/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00538633, 0.276193, 0.0274574)
+shape = SubResource("BoxShape3D_14unn")
+
+[node name="LowerBodyCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 3.55271e-15, 2.38419e-07, -2.01805e-08, 0.996411, 0.0846432, -2.37563e-07, -0.0846432, 0.996411, 4.8656e-11, 0.984246, 6.02777e-05)
+bone_name = "body_lower"
+bone_idx = 0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/LowerBodyCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LowerBodyCollider/RigidBody3D"]
+transform = Transform3D(1, -3.19366e-08, 2.14827e-09, 3.19365e-08, 0.99099, -0.133952, 2.14828e-09, 0.133952, 0.99099, 0.00184631, 0.102815, 0.0128705)
+shape = SubResource("BoxShape3D_64jcs")
+
+[node name="LeftUpperArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="6"]
+transform = Transform3D(-0.932069, 0.362227, -0.00626355, -0.362281, -0.93193, 0.0161212, 2.35531e-06, 0.0172953, 0.99985, 0.1717, 1.46724, -0.0418175)
+bone_name = "upperarm.l"
+bone_idx = 3
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/LeftUpperArmCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LeftUpperArmCollider/RigidBody3D"]
+transform = Transform3D(0.949616, 0.313407, 0.00234032, -0.313388, 0.949406, 0.0204173, 0.00417713, -0.0201222, 0.999787, -0.0305892, 0.133523, 0.0073195)
+shape = SubResource("BoxShape3D_rpqsr")
+
+[node name="LeftLowerArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="7"]
+transform = Transform3D(-0.982396, 0.180217, -0.0492013, -0.186813, -0.947709, 0.258746, 1.98209e-06, 0.263383, 0.964692, 0.259406, 1.24159, -0.0376299)
+bone_name = "lowerarm.l"
+bone_idx = 4
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/LeftLowerArmCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LeftLowerArmCollider/RigidBody3D"]
+transform = Transform3D(0.998717, 0.0457018, -0.0218245, -0.0466542, 0.997882, -0.0453309, 0.0197066, 0.046291, 0.998734, 0.0148937, 0.259798, -0.00931048)
+shape = SubResource("BoxShape3D_64xk0")
+
+[node name="LeftUpperLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="8"]
+transform = Transform3D(-0.989846, 0.100434, 0.101155, -0.0944529, -0.993576, 0.0623425, 0.106771, 0.0521513, 0.99293, 0.0893398, 0.994018, -0.0180867)
+bone_name = "upperleg.l"
+bone_idx = 7
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/LeftUpperLegCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LeftUpperLegCollider/RigidBody3D"]
+transform = Transform3D(0.992908, 0.118877, 0.00258649, -0.11844, 0.986873, 0.109711, 0.0104843, -0.109239, 0.99395, 0.0046661, 0.246595, -0.00578459)
+shape = SubResource("BoxShape3D_lhv8s")
+
+[node name="LeftLowerLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="9"]
+transform = Transform3D(-0.990971, 0.0650249, 0.117741, -0.0816925, -0.986387, -0.142722, 0.106862, -0.151046, 0.982749, 0.13521, 0.540228, 0.00573198)
+bone_name = "lowerleg.l"
+bone_idx = 8
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/LeftLowerLegCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/LeftLowerLegCollider/RigidBody3D"]
+transform = Transform3D(0.997727, 0.066499, 0.0109086, -0.06567, 0.995785, -0.0640143, -0.0151201, 0.0631518, 0.997885, -0.000918478, 0.266054, -0.0328078)
+shape = SubResource("BoxShape3D_ecihn")
+
+[node name="RightUpperArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="10"]
+transform = Transform3D(-0.920632, -0.390372, 0.00675042, 0.39043, -0.920494, 0.0159235, -2.35066e-06, 0.0172952, 0.99985, -0.1717, 1.46724, -0.0418175)
+bone_name = "upperarm.r"
+bone_idx = 5
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/RightUpperArmCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/RightUpperArmCollider/RigidBody3D"]
+transform = Transform3D(0.949321, -0.314267, -0.00515247, 0.314308, 0.949235, 0.0127847, 0.000873107, -0.0137562, 0.999905, 0.0270566, 0.14049, 0.00827533)
+shape = SubResource("BoxShape3D_kgj34")
+
+[node name="RightLowerArmCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="11"]
+transform = Transform3D(-0.920632, -0.390372, 0.00675042, 0.39043, -0.920494, 0.0159235, -2.35066e-06, 0.0172952, 0.99985, -0.1717, 1.46724, -0.0418175)
+bone_name = "upperarm.r"
+bone_idx = 5
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/RightLowerArmCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/RightLowerArmCollider/RigidBody3D"]
+transform = Transform3D(0.957981, -0.229114, 0.172578, 0.263655, 0.9403, -0.215256, -0.112955, 0.251712, 0.961199, -0.0651265, 0.481448, 0.0491953)
+shape = SubResource("BoxShape3D_uay40")
+
+[node name="RightUpperLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="12"]
+transform = Transform3D(-0.991567, -0.0987378, -0.0846137, 0.0937695, -0.993732, 0.0608774, -0.0900982, 0.0524261, 0.994567, -0.0893398, 0.994018, -0.0180867)
+bone_name = "upperleg.r"
+bone_idx = 10
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/RightUpperLegCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/RightUpperLegCollider/RigidBody3D"]
+transform = Transform3D(0.9891, -0.146889, -0.0102905, 0.146537, 0.975019, 0.166929, -0.014486, -0.166616, 0.985916, -0.0158937, 0.23259, -0.013359)
+shape = SubResource("BoxShape3D_f1wew")
+
+[node name="RightLowerLegCollider" type="BoneAttachment3D" parent="behold_a_man/Armature/Skeleton3D" index="13"]
+transform = Transform3D(-0.992683, -0.0667322, -0.1012, 0.0810084, -0.98623, -0.144185, -0.0901884, -0.151323, 0.984377, -0.134436, 0.540157, 0.00585747)
+bone_name = "lowerleg.r"
+bone_idx = 11
+
+[node name="RigidBody3D" type="RigidBody3D" parent="behold_a_man/Armature/Skeleton3D/RightLowerLegCollider"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="behold_a_man/Armature/Skeleton3D/RightLowerLegCollider/RigidBody3D"]
+transform = Transform3D(0.991368, -0.063612, -0.114641, 0.0559723, 0.996068, -0.0686729, 0.118559, 0.0616634, 0.99103, -0.00884502, 0.262338, -0.0252474)
+shape = SubResource("BoxShape3D_kxvw2")
 
 [node name="AnimationPlayer" parent="behold_a_man" index="1"]
 callback_mode_process = 0
@@ -2032,6 +2213,6 @@ shape = SubResource("CapsuleShape3D_m6a4k")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="AnimationTree" to="." method="_on_animation_tree_animation_started"]
-[connection signal="body_entered" from="behold_a_man/Armature/Skeleton3D/BoneAttachment3D/Punch_RigidBody3D" to="." method="_on_punch_rigid_body_3d_hitbox_entered"]
+[connection signal="body_entered" from="behold_a_man/Armature/Skeleton3D/FistCollider/Punch_RigidBody3D" to="." method="_on_punch_rigid_body_3d_hitbox_entered"]
 
 [editable path="behold_a_man"]
